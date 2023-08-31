@@ -37,7 +37,7 @@
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                     <nav id="desktop-nav">
                         <ul>
-                            <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="/">Home</a></li>
+                            <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="/">Beranda</a></li>
                             <li><a href="#">Tentang Kami</a>
                                 <ul>
                                     <li><a href=" {{route('profile.sekolah')}} ">Profile Sekolah</a></li>
