@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-    Profile Bimbel
+    Profile Savaana
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Profile Bimbel</h2>
+                    <h2> Profile Savaana</h2>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header header-bottom">
-                                    <h4>Profile Bimbel</h4>
+                                    <h4>Profile Savaana</h4>
                                 </div>
                                 <div class="card-body">
                                     @if ($profile == NULL)
@@ -49,7 +49,7 @@
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="basicInput">Title</label> <span class="text-danger">*</span>
-                                                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value=" {{old('title')}} " placeholder="Contoh : Profile Bimbel SMK NASIONAL" />
+                                                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value=" {{old('title')}} " placeholder="Contoh : Profile Savaana SMK NASIONAL" />
                                                         @error('title')
                                                             <div class="invalid-feedback">
                                                             <strong>{{ $message }}</strong>
@@ -95,7 +95,7 @@
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="basicInput">Title</label> <span class="text-danger">*</span>
-                                                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value=" {{$profile->title}} " placeholder="Contoh : Profile Bimbel SMK NASIONAL" />
+                                                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value=" {{$profile->title}} " placeholder="Contoh : Profile Savaana SMK NASIONAL" />
                                                         @error('title')
                                                             <div class="invalid-feedback">
                                                             <strong>{{ $message }}</strong>

@@ -1,7 +1,7 @@
 @extends('layouts.Frontend.app')
 
 @section('title')
-    Profile Bimbel
+    Profile Savaana
 @endsection
 
 @section('content')
