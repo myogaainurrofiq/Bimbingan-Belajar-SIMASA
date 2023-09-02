@@ -53,7 +53,7 @@ class ProfilSekolahController extends Controller
             $profile->image     = $nama_img;
             $profile->save();
 
-            Session::flash('success','Profile Sekolah Berhasil dibuat!');
+            Session::flash('success','Profile Bimbel Berhasil dibuat!');
             return redirect()->route('backend-profile-sekolah.index');
 
         } catch (ErrorException $e) {
@@ -107,7 +107,7 @@ class ProfilSekolahController extends Controller
             $profile->image     = $nama_img ?? $profile->image;
             $profile->save();
 
-            Session::flash('success','Profile Sekolah Berhasil diupdate!');
+            Session::flash('success','Profile Bimbel Berhasil diupdate!');
             return redirect()->route('backend-profile-sekolah.index');
 
         } catch (ErrorException $e) {

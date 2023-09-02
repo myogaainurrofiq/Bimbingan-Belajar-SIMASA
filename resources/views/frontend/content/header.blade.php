@@ -40,7 +40,7 @@
                             <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="/">Beranda</a></li>
                             <li><a href="#">Tentang Kami</a>
                                 <ul>
-                                    <li><a href=" {{route('profile.sekolah')}} ">Profile Sekolah</a></li>
+                                    <li><a href=" {{route('profile.sekolah')}} ">Profile Bimbel</a></li>
                                     <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
                                 </ul>
                             </li>
@@ -90,7 +90,7 @@
                             <li class="active"><a href="#">Beranda</a></li>
                             <li><a href="#">Tentang Kami</a>
                                 <ul>
-                                    <li><a href=" {{route('profile.sekolah')}} ">Profile Sekolah</a></li>
+                                    <li><a href=" {{route('profile.sekolah')}} ">Profile Bimbel</a></li>
                                     <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
                                 </ul>
                             </li>

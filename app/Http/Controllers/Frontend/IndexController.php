@@ -126,7 +126,7 @@ class IndexController extends Controller
          return view('frontend.content.event.detailEvent', compact('event','eventOther','berita','jurusanM','kegiatanM','footer'));
     }
 
-    // Profile Sekolah
+    // Profile Bimbel
     public function profileSekolah()
     {
         $jurusanM = Jurusan::where('is_active','0')->get();

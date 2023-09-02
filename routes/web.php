@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/','Frontend\IndexController@index');
 
     ///// MENU \\\\\
-        //// PROFILE SEKOLAH \\\\
+        //// Profile Bimbel \\\\
         Route::get('profile-sekolah',[App\Http\Controllers\Frontend\IndexController::class,'profileSekolah'])->name('profile.sekolah');
 
         //// VISI dan MISI
@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/')->middleware('role:Admin')->group( function (){
         ///// WEBSITE \\\\\
         Route::resources([
-            /// PROFILE SEKOLAH \\
+            /// Profile Bimbel \\
             'backend-profile-sekolah'   => Backend\Website\ProfilSekolahController::class,
             /// VISI & MISI \\\
             'backend-visimisi'  => Backend\Website\VisidanMisiController::class,
