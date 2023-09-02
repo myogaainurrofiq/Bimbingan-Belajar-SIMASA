@@ -9,7 +9,7 @@
     <meta name="description" content="Sekolahku adalah aplikasi manajemen sekolah berbasis website yang di bangun dan di kembangkan dengan Framework Laravel">
     <meta name="keywords" content="">
     <meta name="author" content="Andri Desmana">
-    <title>Register Page - SekolahKu</title>
+    <title>Register Page - SIMASA</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
@@ -71,7 +71,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <h2 class="brand-text text-primary ml-1">SekolahKu</h2>
+                            <h2 class="brand-text text-primary ml-1">SIMASA</h2>
                         </a>
                         <!-- /Brand logo-->
                         <!-- Left Text-->
