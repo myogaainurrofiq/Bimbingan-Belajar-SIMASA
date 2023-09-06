@@ -17,6 +17,7 @@ class CreateAboutsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('desc');
+            $table->string('desc2');
             $table->string('image');
             $table->enum('is_active',[0,1])->default(0);
             $table->timestamps();

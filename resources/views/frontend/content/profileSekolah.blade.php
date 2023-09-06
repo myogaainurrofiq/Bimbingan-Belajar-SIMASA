@@ -1,7 +1,7 @@
 @extends('layouts.Frontend.app')
 
 @section('title')
-    Profile Sekolah
+    Profile Savaana
 @endsection
 
 @section('content')
