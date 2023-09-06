@@ -2949,6 +2949,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
 .about1-area {
   padding: 81px 0 0;
   text-align: center;
+  margin-bottom: 81px;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .about1-area {
