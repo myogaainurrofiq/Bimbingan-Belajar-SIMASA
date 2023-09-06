@@ -9,7 +9,7 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                        <span class="faq-box-count">1</span>Terakreditasi A
+                                        <span class="faq-box-count">1</span>Kualitas pendidikan tinggi
                                     </a>
                                 </h3>
                             </div>
@@ -27,7 +27,7 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                        <span class="faq-box-count">2</span>Memiliki Fasilitas Yang Lengkap.
+                                        <span class="faq-box-count">2</span>Memiliki fasilitas yang lengkap
                                     </a>
                                 </h3>
                             </div>
@@ -45,7 +45,7 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                        <span class="faq-box-count">3</span>Pengajar S1 dan S2 dari lulusan kampus ternama.
+                                        <span class="faq-box-count">3</span>Tentor pengajar berkualitas
                                     </a>
                                 </h3>
                             </div>
@@ -65,7 +65,7 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                        <span class="faq-box-count">4</span>Beasiswa Sekolah dan Kampus.
+                                        <span class="faq-box-count">4</span>Fleksibilitas waktu
                                     </a>
                                 </h3>
                             </div>
@@ -83,7 +83,7 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                                        <span class="faq-box-count">5</span>Alumni siap kerja, siap kuliah dan siap berwirausaha.
+                                        <span class="faq-box-count">5</span>Metode pembelajaran mudah dipahami
                                     </a>
                                 </h3>
                             </div>
@@ -101,7 +101,7 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
-                                        <span class="faq-box-count">6</span>Memiliki segudang prestasi.
+                                        <span class="faq-box-count">6</span>Harga bersahabat
                                     </a>
                                 </h3>
                             </div>
