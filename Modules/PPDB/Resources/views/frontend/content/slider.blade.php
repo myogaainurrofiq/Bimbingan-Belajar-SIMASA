@@ -8,7 +8,7 @@
             <div class="slider-content s-tb slide-1">
                 <div class="title-container s-tb-c">
                     <div class="title1">Achieve Your Dream With Us</div>
-                    <p>Kini Mendaftar ke SMK Yadika Natar lebih Mudah Daftar dari rumah dan tes dari rumah.</p>
+                    <p>Kini mendaftar ke Savaana Course lebih mudah daftar dari rumah dan tes dari rumah.</p>
                     <div class="slider-btn-area">
                         <a href="{{route('register')}}" class="default-big-btn">Daftar</a>
                     </div>
@@ -19,7 +19,7 @@
             <div class="slider-content s-tb slide-2">
                 <div class="title-container s-tb-c">
                     <div class="title1">Best Education For You</div>
-                    <p>Jadikan Sekolah SMK Yadika Natar sebagai tempat dirimu menggapai mimpi.</p>
+                    <p>Jadikan Savaana Course sebagai tempat dirimu menggapai mimpi.</p>
                     <div class="slider-btn-area">
                         <a href="{{route('register')}}" class="default-big-btn">Daftar</a>
                     </div>
@@ -34,8 +34,8 @@
             <div class="row service1-wrapper">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 service-box1">
                     <div class="service-box-content">
-                        <h3><a href="#">Beasiswa</a></h3>
-                        <p>Beasiswa untuk murid berprestasi, Akademin atau Non-Akademik.</p>
+                        <h3><a href="#">Biaya Terjangkau</a></h3>
+                        <p>Layanan berkualitas tinggi dengan harga yang bersaing.</p>
                     </div>
                     <div class="service-box-icon">
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 service-box1">
                     <div class="service-box-content">
-                        <h3><a href="#">Pengajar Terampil</a></h3>
+                        <h3><a href="#">Tentor Pengajar</a></h3>
                         <p>Guru yang terampil di bidangnya, berpengalaman dan teruji.</p>
                     </div>
                     <div class="service-box-icon">

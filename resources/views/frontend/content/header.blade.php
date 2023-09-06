@@ -64,7 +64,7 @@
                                 </ul>
                             </li>
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
-                            <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li>
+                            <li><a href="{{url('ppdb')}}" target="_blank">Pendaftaran</a></li>
 
                         </ul>
                     </nav>
@@ -108,7 +108,7 @@
                                 </ul>
                             </li>
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
-                            <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li>
+                            <li><a href="{{url('ppdb')}}" target="_blank">Pendaftaran</a></li>
 
                             <li><a href="#">Lainnya</a>
                                 <ul>
