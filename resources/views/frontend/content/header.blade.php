@@ -66,12 +66,6 @@
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
                             <li><a href="{{url('ppdb')}}" target="_blank">Pendaftaran</a></li>
 
-                            <li><a href="#">Lainnya</a>
-                                <ul>
-                                    <li><a href=" {{url('murid/perpustakaan')}} ">Perpustakaan</a></li>
-                                    <li><a href="">Alumni</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </nav>
                 </div>
