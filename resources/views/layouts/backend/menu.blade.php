@@ -145,12 +145,12 @@
 
 
            <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#"><i data-feather="users"></i>
+                <a class="d-flex align-items-center" href="#"><i data-feather="calendar"></i>
                     <span class="menu-title text-truncate" data-i18n="Card">Kelas</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="nav-item {{ (request()->is('kelas')) ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href=" {{url('kelas')}} "><i data-feather="circle"></i>
+                    <li class="nav-item {{ (request()->is('backend-kelas')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{url('backend-kelas')}} "><i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Basic">Kelas</span>
                         </a>
                     </li>
@@ -236,6 +236,11 @@
               <li class="nav-item {{ (request()->is('murid/perpustakaan')) ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href=" {{route('perpustakaan.index')}} "><i data-feather="book"></i>
                     <span class="menu-title text-truncate" data-i18n="Books">Perpustakaan</span>
+                </a>
+              </li>
+              <li class="nav-item {{ (request()->is('murid/kelas')) ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href=" {{url('murid/kelas')}} "><i data-feather="calendar"></i>
+                    <span class="menu-title text-truncate" data-i18n="Books">Kelas</span>
                 </a>
               </li>
               <li class="nav-item {{ (request()->is('murid/pembayaran')) ? 'active' : '' }}">

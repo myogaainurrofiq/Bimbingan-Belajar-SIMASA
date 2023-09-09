@@ -44,7 +44,7 @@
                                         <h4>Data Kelas</h4>
                                     </div>
                                     <div class="float-end">
-                                        <a href=" {{url('kelas/create')}} " class="btn btn-primary">Tambah</a>
+                                        <a href=" {{url('backend-kelas/create')}} " class="btn btn-primary">Tambah</a>
                                     </div>
                                 </div>
                                 <div class="card-datatable">
@@ -72,8 +72,8 @@
                                                     <td>{{$item->ruangan}}</td>
                                                     <td>{{$item->mentor->name}}</td>
                                                     <td>
-                                                        <a href="{{route('kelas.edit', $item->id)}}" class="btn btn-info btn-sm">Edit</a>
-                                                        <a href="{{route('kelas.show', $item->id)}}" class="btn btn-success btn-sm">Murid</a>
+                                                        <a href="{{route('backend-kelas.edit', $item->id)}}" class="btn btn-info btn-sm">Edit</a>
+                                                        <a href="{{route('backend-kelas.show', $item->id)}}" class="btn btn-success btn-sm">Murid</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

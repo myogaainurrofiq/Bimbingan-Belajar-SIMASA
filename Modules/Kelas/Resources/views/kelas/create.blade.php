@@ -23,7 +23,7 @@
                         <h4>Tambah Kelas</h4>
                     </div>
                     <div class="card-body">
-                        <form action=" {{route('kelas.store')}} " method="post" enctype="multipart/form-data">
+                        <form action=" {{route('backend-kelas.store')}} " method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-6">
@@ -122,7 +122,7 @@
 
                             </div>
                             <button class="btn btn-primary" type="submit">Tambah</button>
-                            <a href="{{url('kelas')}}" class="btn btn-warning">Batal</a>
+                            <a href="{{url('backend-kelas')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>
                 </div>

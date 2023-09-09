@@ -23,7 +23,7 @@
                         <h4>Edit Kelas</h4>
                     </div>
                     <div class="card-body">
-                        <form action=" {{route('kelas.update', $kelas->id)}} " method="post" enctype="multipart/form-data">
+                        <form action=" {{route('backend-kelas.update', $kelas->id)}} " method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
@@ -123,7 +123,7 @@
 
                                 </div>
                             <button class="btn btn-primary" type="submit">Update</button>
-                            <a href="{{route('kelas.index')}}" class="btn btn-warning">Batal</a>
+                            <a href="{{route('backend-kelas.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>
                 </div>
