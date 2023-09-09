@@ -40,7 +40,12 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Data Kelas <a href=" {{url('kelas/create')}} " class="btn btn-primary">Tambah</a></h4>
+                                    <div class="float-start">
+                                        <h4>Data Kelas</h4>
+                                    </div>
+                                    <div class="float-end">
+                                        <a href=" {{url('kelas/create')}} " class="btn btn-primary">Tambah</a>
+                                    </div>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
@@ -68,7 +73,7 @@
                                                     <td>{{$item->mentor->name}}</td>
                                                     <td>
                                                         <a href="{{route('kelas.edit', $item->id)}}" class="btn btn-info btn-sm">Edit</a>
-                                                        <a href="" class="btn btn-success btn-sm">Murid</a>
+                                                        <a href="{{route('kelas.show', $item->id)}}" class="btn btn-success btn-sm">Murid</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -9,6 +9,7 @@ use Modules\Kelas\Entities\Kelas;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\Kelas\Entities\KelasMurid;
 
 class KelasController extends Controller
 {
@@ -64,7 +65,12 @@ class KelasController extends Controller
      */
     public function show($id)
     {
-        return view('kelas::kelas.show');
+        $kelas = Kelas::find($id);
+        $murid = User::whereDoesntHave('kelasMurid')
+            ->where('Role', 'Murid')->where('status', 'Aktif')->get();
+        $kelasAll = KelasMurid::with('murid', 'kelas.mentor')
+            ->where('kelas_id', $id)->get();
+        return view('kelas::kelas.show', compact('kelas', 'murid', 'kelasAll'));
     }
 
     /**
@@ -113,5 +119,20 @@ class KelasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function tambahMurid(Request $request)
+    {
+        try {
+            $data = new KelasMurid;
+            $data->kelas_id = $request->kelas_id;
+            $data->murid_id = $request->murid_id;
+            $data->save();
+
+            Session::flash('success', 'Murid Berhasil di update.');
+            return back();
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 }
