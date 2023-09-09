@@ -143,6 +143,20 @@
                 </ul>
             </li>
 
+
+           <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#"><i data-feather="users"></i>
+                    <span class="menu-title text-truncate" data-i18n="Card">Kelas</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="nav-item {{ (request()->is('kelas')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{url('kelas')}} "><i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Kelas</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             {{-- MENU GURU --}}
             @elseif(Auth::user()->role == 'Guru')
             <li class=" nav-item">
