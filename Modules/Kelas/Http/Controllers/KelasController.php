@@ -52,7 +52,7 @@ class KelasController extends Controller
             $kelas->save();
 
             Session::flash('success', 'Kelas Berhasil di tambah.');
-            return redirect('kelas');
+            return redirect('backend-kelas');
         } catch (\ErrorException $e) {
             throw new ErrorException($e->getMessage());
         }
@@ -105,7 +105,7 @@ class KelasController extends Controller
             $kelas->update();
 
             Session::flash('success', 'Kelas Berhasil di update.');
-            return redirect('kelas');
+            return redirect('backend-kelas');
         } catch (\ErrorException $e) {
             throw new ErrorException($e->getMessage());
         }

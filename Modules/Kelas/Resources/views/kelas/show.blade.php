@@ -134,7 +134,7 @@
                           </button>
                       </div>
                       <div class="modal-body">
-                        <form action=" {{url('kelas/tambah-murid')}} " method="post">
+                        <form action=" {{url('backend-kelas/tambah-murid')}} " method="post">
                           @csrf
                           <div class="col-12">
                               <div class="form-group">
