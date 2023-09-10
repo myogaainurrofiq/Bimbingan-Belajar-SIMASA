@@ -1,0 +1,13 @@
+{
+    "name": "Kelas",
+    "alias": "kelas",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Kelas\\Providers\\KelasServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
