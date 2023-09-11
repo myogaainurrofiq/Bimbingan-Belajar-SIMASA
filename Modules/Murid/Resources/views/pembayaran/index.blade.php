@@ -40,7 +40,15 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Data Pembayaran</h4>
+
+                                    <div class="float-start">
+                                         <h4 class="card-title">Data Pembayaran</h4>
+                                    </div>
+                                    <div class="float-end">
+                                        @if ($cek)
+                                            <a href=" {{route('pembayaran.create')}} " class="btn btn-primary">Tambah</a>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
