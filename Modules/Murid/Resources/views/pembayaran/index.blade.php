@@ -45,7 +45,7 @@
                                          <h4 class="card-title">Data Pembayaran</h4>
                                     </div>
                                     <div class="float-end">
-                                        @if ($cek == true)
+                                        @if ($cek)
                                             <a href=" {{route('pembayaran.create')}} " class="btn btn-primary">Tambah</a>
                                         @endif
                                     </div>
