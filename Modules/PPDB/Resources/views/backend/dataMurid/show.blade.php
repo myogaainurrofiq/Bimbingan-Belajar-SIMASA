@@ -23,7 +23,7 @@
     <div class="content-body">
         <div class="row">
             <div class="col-12">
-              <div class="alert alert-danger {{$murid->berkas->kartu_keluarga != NULL ? 'hidden' : ''}}" role="alert">
+              <div class="alert alert-danger {{@$murid->berkas->kartu_keluarga != NULL ? 'hidden' : ''}}" role="alert">
                     <div class="alert-body">
                         <strong>Info:</strong> Data Calon Murid Belum Lengkap !
                     </div>
@@ -327,35 +327,35 @@
                                 <div class="col-6">
                                     <ul>
                                       <li>Kartu Keluarga
-                                        <a href="{{asset('storage/images/berkas_murid/' .$murid->berkas->kartu_keluarga)}}" target="_blank" class="badge badge-info {{$murid->berkas->kartu_keluarga == NULL ? 'hidden' : ''}}">view</a>
+                                        <a href="{{asset('storage/images/berkas_murid/' .@$murid->berkas->kartu_keluarga)}}" target="_blank" class="badge badge-info {{@$murid->berkas->kartu_keluarga == NULL ? 'hidden' : ''}}">view</a>
                                       </li>
                                       <li>Surat Kelakuan Baik
-                                        <a href="{{asset('storage/images/berkas_murid/' .$murid->berkas->surat_kelakuan_baik)}}" target="_blank" class="badge badge-info {{$murid->berkas->surat_kelakuan_baik == NULL ? 'hidden' : ''}} ">view</a>
+                                        <a href="{{asset('storage/images/berkas_murid/' .@$murid->berkas->surat_kelakuan_baik)}}" target="_blank" class="badge badge-info {{@$murid->berkas->surat_kelakuan_baik == NULL ? 'hidden' : ''}} ">view</a>
                                       </li>
                                       <li>Surat Tidak Buta Warna
-                                        <a href="{{asset('storage/images/berkas_murid/' .$murid->berkas->surat_tidak_buta_warna)}}" target="_blank" class="badge badge-info {{$murid->berkas->surat_tidak_buta_warna == NULL ? 'hidden' : ''}} ">view</a>
+                                        <a href="{{asset('storage/images/berkas_murid/' .@$murid->berkas->surat_tidak_buta_warna)}}" target="_blank" class="badge badge-info {{@$murid->berkas->surat_tidak_buta_warna == NULL ? 'hidden' : ''}} ">view</a>
                                       </li>
                                       <li>ijazah
-                                        <a href="{{asset('storage/images/berkas_murid/' .$murid->berkas->ijazah)}}" target="_blank" class="badge badge-info {{$murid->berkas->ijazah == NULL ? 'hidden' : ''}} ">view</a>
+                                        <a href="{{asset('storage/images/berkas_murid/' .@$murid->berkas->ijazah)}}" target="_blank" class="badge badge-info {{@$murid->berkas->ijazah == NULL ? 'hidden' : ''}} ">view</a>
                                       </li>
                                     </ul>
                                 </div>
                                 <div class="col-6">
                                   <ul>
                                     <li>Akte Kelahiran
-                                      <a href="{{asset('storage/images/berkas_murid/' .$murid->berkas->akte_kelahiran)}}" target="_blank" class="badge badge-info {{$murid->berkas->akte_kelahiran == NULL ? 'hidden' : ''}} ">view</a>
+                                      <a href="{{asset('storage/images/berkas_murid/' .@$murid->berkas->akte_kelahiran)}}" target="_blank" class="badge badge-info {{@$murid->berkas->akte_kelahiran == NULL ? 'hidden' : ''}} ">view</a>
                                     </li>
                                     <li>Surat Sehat
-                                      <a href="{{asset('storage/images/berkas_murid/' .$murid->berkas->surat_sehat)}}" target="_blank" class="badge badge-info {{$murid->berkas->surat_sehat == NULL ? 'hidden' : ''}} ">view</a>
+                                      <a href="{{asset('storage/images/berkas_murid/' .@$murid->berkas->surat_sehat)}}" target="_blank" class="badge badge-info {{@$murid->berkas->surat_sehat == NULL ? 'hidden' : ''}} ">view</a>
                                     </li>
                                     <li>Rapor
-                                      <a href="{{asset('storage/images/berkas_murid/' .$murid->berkas->rapor)}}" target="_blank" class="badge badge-info {{$murid->berkas->rapor == NULL ? 'hidden' : ''}} ">view</a>
+                                      <a href="{{asset('storage/images/berkas_murid/' .@$murid->berkas->rapor)}}" target="_blank" class="badge badge-info {{@$murid->berkas->rapor == NULL ? 'hidden' : ''}} ">view</a>
                                     </li>
                                   </ul>
 
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit" {{$murid->berkas->kartu_keluarga == NULL ? 'disabled' : ''}} >Terima Murid</button>
+                            <button class="btn btn-primary" type="submit" {{@$murid->berkas->kartu_keluarga == NULL && @$murid->berkas != null  ? 'disabled' : ''}} >Terima Murid</button>
                             <a href="{{route('data-murid.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

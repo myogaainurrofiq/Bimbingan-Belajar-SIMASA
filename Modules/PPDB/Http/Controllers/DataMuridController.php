@@ -22,7 +22,7 @@ class DataMuridController extends Controller
      */
     public function index()
     {
-        $murid = User::with('muridDetail')->where('role','Guest')->get();
+        $murid = User::with('muridDetail')->where('role', 'Guest')->get();
         return view('ppdb::backend.dataMurid.index', compact('murid'));
     }
 
@@ -52,13 +52,12 @@ class DataMuridController extends Controller
      */
     public function show($id)
     {
-        $murid = User::with('muridDetail','dataOrtu','berkas')->where('role','Guest')->find($id);
-        if (!$murid->muridDetail->agama || !$murid->dataOrtu->nama_ayah || !$murid->berkas->kartu_keluarga) {
-            Session::flash('error','Calon Siswa Belum Input Biodata Diri !');
-            return redirect('/ppdb/data-murid');
-        }
-        return view('ppdb::backend.dataMurid.show',compact('murid'));
-
+        $murid = User::with('muridDetail', 'dataOrtu', 'berkas')->where('role', 'Guest')->find($id);
+        // if (!$murid->muridDetail->agama || !$murid->dataOrtu->nama_ayah || !$murid->berkas->kartu_keluarga) {
+        //     Session::flash('error', 'Calon Siswa Belum Input Biodata Diri !');
+        //     return redirect('/ppdb/data-murid');
+        // }
+        return view('ppdb::backend.dataMurid.show', compact('murid'));
     }
 
     /**
@@ -81,18 +80,20 @@ class DataMuridController extends Controller
     {
         try {
             DB::beginTransaction();
-            $validator = Validator::make($request->all(), [
-                'nis'   => 'required|numeric|unique:data_murids',
-                'nisn'  => 'required|numeric|unique:data_murids',
-            ],
-            [
-                'nis.required'      => 'NIS tidak boleh kosong.',
-                'nisn.required'     => 'NISN tidak boleh kosong.',
-                'nis.numeric'       => 'NIS hanya mendukung angka.',
-                'nis.unique'        => 'NIS sudah pernah digunakan.',
-                'nisn.numeric'      => 'NISN hanya mendukung angka.',
-                'nisn.unique'       => 'NISN sudah pernah digunakan.',
-            ]
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'nis'   => 'required|numeric|unique:data_murids',
+                    'nisn'  => 'required|numeric|unique:data_murids',
+                ],
+                [
+                    'nis.required'      => 'NIS tidak boleh kosong.',
+                    'nisn.required'     => 'NISN tidak boleh kosong.',
+                    'nis.numeric'       => 'NIS hanya mendukung angka.',
+                    'nis.unique'        => 'NIS sudah pernah digunakan.',
+                    'nisn.numeric'      => 'NISN hanya mendukung angka.',
+                    'nisn.unique'       => 'NISN sudah pernah digunakan.',
+                ]
             );
 
             if ($validator->fails()) {
@@ -116,17 +117,16 @@ class DataMuridController extends Controller
                 $this->payment($murid->id);
             }
 
-            DB::table('model_has_roles')->where('model_id',$id)->delete();
+            DB::table('model_has_roles')->where('model_id', $id)->delete();
             $murid->assignRole($murid->role);
 
             DB::commit();
-            Session::flash('success','Success, Data Berhasil diupdate !');
+            Session::flash('success', 'Success, Data Berhasil diupdate !');
             return redirect()->route('data-murid.index');
         } catch (ErrorException $e) {
             DB::rollback();
             throw new ErrorException($e->getMessage());
         }
-
     }
 
     /**
@@ -142,29 +142,29 @@ class DataMuridController extends Controller
     // Create Data Payment
     public function payment($murid)
     {
-      try {
-        DB::beginTransaction();
-        $payment = PaymentSpp::create([
-          'user_id'   => $murid,
-          'year'      => date('Y'),
-          'is_active' =>  1
-        ]);
-
-        if ($payment) {
-            $generate = rand(10,100);
-            DetailPaymentSpp::create([
-                'payment_id'  => $payment->id,
-                'user_id'     => $murid,
-                'month'       => date('F'),
-                'amount'      => 300 .$murid .$generate,
-                'status'      => 'unpaid',
-                'file'        => null,
+        try {
+            DB::beginTransaction();
+            $payment = PaymentSpp::create([
+                'user_id'   => $murid,
+                'year'      => date('Y'),
+                'is_active' =>  1
             ]);
+
+            if ($payment) {
+                $generate = rand(10, 100);
+                DetailPaymentSpp::create([
+                    'payment_id'  => $payment->id,
+                    'user_id'     => $murid,
+                    'month'       => date('F'),
+                    'amount'      => 300 . $murid . $generate,
+                    'status'      => 'unpaid',
+                    'file'        => null,
+                ]);
+            }
+            DB::commit();
+        } catch (\ErrorException $e) {
+            DB::rollBack();
+            throw new ErrorException($e->getMessage());
         }
-        DB::commit();
-      } catch (\ErrorException $e) {
-        DB::rollBack();
-        throw new ErrorException($e->getMessage());
-      }
     }
 }
