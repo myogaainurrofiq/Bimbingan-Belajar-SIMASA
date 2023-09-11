@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Modules\Murid\Http\Requests\ConfirmPaymentRequest;
 use Modules\SPP\Entities\DetailPaymentSpp;
+use Modules\SPP\Entities\PaymentSpp;
 
 class PembayaranController extends Controller
 {
@@ -23,8 +24,15 @@ class PembayaranController extends Controller
      */
     public function index()
     {
+        $cek = false;
         $payment = DetailPaymentSpp::with('payment')->where('user_id', Auth::id())->get();
-        return view('murid::pembayaran.index', compact('payment'));
+        $getBln = Carbon::now()->addMonths(1)->format('F');
+        $monthNow = Carbon::now()->format('F');
+        $cekPayment = PaymentSpp::where('user_id', Auth::id())->first();
+        if ($cekPayment->$monthNow == 'paid' && $cekPayment->$getBln == 'unpaid') {
+            $cek = true;
+        }
+        return view('murid::pembayaran.index', compact('payment', 'cek', 'cekPayment'));
     }
 
     /**
@@ -33,7 +41,11 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        return view('murid::create');
+        $accountbanks = User::with('banks')->first();
+        $bank = Bank::all();
+        $generate = 300 . Auth::id() . rand(10, 100);
+        $getBln = Carbon::now()->addMonths(1)->format('F');
+        return view('murid::pembayaran.tambah_pembayaran', compact('accountbanks', 'bank', 'generate', 'getBln'));
     }
 
     /**
@@ -43,7 +55,46 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $cekPayment = PaymentSpp::where('user_id', Auth::id())->where('year', date('Y'))->first();
+            $getBln = Carbon::now()->addMonths(1)->format('F');
+
+            if (!$cekPayment) {
+                $payment = PaymentSpp::create([
+                    'user_id'   => Auth::id(),
+                    'year'      => date('Y'),
+                    'is_active' =>  1
+                ]);
+            }
+
+            if ($request->file) {
+                $file = $request->file('file');
+                $file_payment = 'payment-' . time() . Auth::id() . "." . $file->getClientOriginalExtension();
+                // isi dengan nama folder tempat kemana file diupload
+                $tujuan_upload = 'public/images/bukti_payment';
+                $file->storeAs($tujuan_upload, $file_payment);
+            }
+
+            DetailPaymentSpp::create([
+                'payment_id'        => $cekPayment ? $cekPayment->id : $payment->id,
+                'user_id'           => Auth::id(),
+                'sender'            => $request->sender,
+                'bank_sender'       => $request->bank_sender,
+                'destination_bank'  => $request->destination_bank,
+                'month'             => $getBln,
+                'status'            => 'unpaid',
+                'amount'            => $request->amount,
+                'file'              => $file_payment,
+                'date_file'         => Carbon::now()
+            ]);
+            DB::commit();
+            Session::flash('success', 'Pembayaran Berhasil dikirim,');
+            return redirect('murid/pembayaran');
+        } catch (\ErrorException $e) {
+            DB::rollBack();
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**
@@ -68,10 +119,10 @@ class PembayaranController extends Controller
         $bank = Bank::all();
 
         if ($payment->status == 'paid') {
-          Session::flash('error','Pembayaran Sudah Diterima.');
-          return redirect('murid/pembayaran');
+            Session::flash('error', 'Pembayaran Sudah Diterima.');
+            return redirect('murid/pembayaran');
         }
-        return view('murid::pembayaran.edit', compact('payment','accountbanks','bank'));
+        return view('murid::pembayaran.edit', compact('payment', 'accountbanks', 'bank'));
     }
 
     /**
@@ -82,33 +133,32 @@ class PembayaranController extends Controller
      */
     public function update(ConfirmPaymentRequest $request, $id)
     {
-      try {
-        DB::beginTransaction();
+        try {
+            DB::beginTransaction();
 
-        if ($request->file) {
-            $file = $request->file('file');
-            $file_payment = 'payment-'.time().Auth::id().".".$file->getClientOriginalExtension();
-            // isi dengan nama folder tempat kemana file diupload
-            $tujuan_upload = 'public/images/bukti_payment';
-            $file->storeAs($tujuan_upload,$file_payment);
+            if ($request->file) {
+                $file = $request->file('file');
+                $file_payment = 'payment-' . time() . Auth::id() . "." . $file->getClientOriginalExtension();
+                // isi dengan nama folder tempat kemana file diupload
+                $tujuan_upload = 'public/images/bukti_payment';
+                $file->storeAs($tujuan_upload, $file_payment);
+            }
+
+            $payment = DetailPaymentSpp::where('user_id', Auth::id())->findOrFail($id);
+            $payment->file              = $file_payment ?? $payment->file;
+            $payment->date_file         = $request->date_file;
+            $payment->sender            = $request->sender;
+            $payment->bank_sender       = $request->bank_sender;
+            $payment->destination_bank  = $request->destination_bank;
+            $payment->update();
+
+            DB::commit();
+            Session::flash('success', 'Pembayaran Berhasil dikirim,');
+            return redirect('murid/pembayaran');
+        } catch (\ErrorException $e) {
+            DB::rollBack();
+            throw new ErrorException($e->getMessage());
         }
-
-        $payment = DetailPaymentSpp::where('user_id', Auth::id())->findOrFail($id);
-        $payment->file              = $file_payment ?? $payment->file;
-        $payment->date_file         = $request->date_file;
-        $payment->sender            = $request->sender;
-        $payment->bank_sender       = $request->bank_sender;
-        $payment->destination_bank  = $request->destination_bank;
-        $payment->update();
-
-        DB::commit();
-        Session::flash('success','Pembayaran Berhasil dikirim,');
-        return redirect('murid/pembayaran');
-
-      } catch (\ErrorException $e) {
-        DB::rollBack();
-        throw new ErrorException($e->getMessage());
-      }
     }
 
     /**
