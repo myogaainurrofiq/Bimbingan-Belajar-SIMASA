@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Kelamin</label> <span class="text-danger">*</span>
                                         <select name="kelamin" class="form-control @error('kelamin') is-invalid @enderror">
@@ -82,7 +82,19 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="basicInput">Password</label> <span class="text-danger">*</span>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value=" {{old('password')}} " placeholder="password" />
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                            <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Foto Profile</label>  <span class="text-danger">*</span>
                                         <input type="file" class="form-control @error('foto_profile') is-invalid @enderror" name="foto_profile"/>
@@ -93,7 +105,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                              
+
                             </div>
                             <button class="btn btn-primary" type="submit">Tambah</button>
                             <a href="{{route('backend-pengguna-murid.index')}}" class="btn btn-warning">Batal</a>
