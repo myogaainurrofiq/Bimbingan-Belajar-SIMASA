@@ -2,17 +2,18 @@
 
 namespace Modules\PPDB\Http\Controllers;
 
-use App\Models\dataMurid;
-use App\Models\User;
-use Illuminate\Contracts\Support\Renderable;
-use ErrorException;
-use Illuminate\Http\Request;
 use Validator;
+use ErrorException;
+use App\Models\User;
+use App\Models\dataMurid;
+use Illuminate\Http\Request;
+use App\Models\MasterPayment;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
-use Modules\SPP\Entities\DetailPaymentSpp;
 use Modules\SPP\Entities\PaymentSpp;
+use Illuminate\Support\Facades\Session;
+use Modules\SPP\Entities\DetailPaymentSpp;
+use Illuminate\Contracts\Support\Renderable;
 
 class DataMuridController extends Controller
 {
@@ -144,6 +145,7 @@ class DataMuridController extends Controller
     {
         try {
             DB::beginTransaction();
+            $biaya = MasterPayment::where('user_id', $murid)->first();
             $payment = PaymentSpp::create([
                 'user_id'   => $murid,
                 'year'      => date('Y'),
@@ -156,7 +158,7 @@ class DataMuridController extends Controller
                     'payment_id'  => $payment->id,
                     'user_id'     => $murid,
                     'month'       => date('F'),
-                    'amount'      => 300 . $murid . $generate,
+                    'amount'      => $biaya->biaya . $murid . $generate,
                     'status'      => 'unpaid',
                     'file'        => null,
                 ]);
