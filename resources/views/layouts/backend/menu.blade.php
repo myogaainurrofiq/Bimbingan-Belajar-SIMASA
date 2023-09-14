@@ -159,8 +159,15 @@
 
             {{-- MENU GURU --}}
             @elseif(Auth::user()->role == 'Guru')
+             <li class=" nav-item">
+
+                <a class="d-flex align-items-center" href="{{route('guru-kelas.index')}}"><i data-feather="credit-card"></i>
+                    <span class="menu-title text-truncate" data-i18n="Card">Data Kelas</span>
+                </a>
+             </li>
             <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#"><i data-feather="credit-card"></i>
+
+                <a class="d-flex align-items-center" href="#"><i data-feather="user"></i>
                     <span class="menu-title text-truncate" data-i18n="Card">Data Murid</span>
                 </a>
                 <ul class="menu-content">
