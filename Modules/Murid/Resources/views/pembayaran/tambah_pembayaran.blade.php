@@ -42,7 +42,6 @@
                         <hr>
                         <form action="{{route('pembayaran.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="text" name="amount" value="{{$generate}}" hidden>
                             <div class="form-group">
                                 <label for="Atas Nama">Nama Pengirim</label>
                                 <input type="text" name="sender" class="form-control @error('sender') is-invalid @enderror" placeholder="Atas Nama" autocomplete="off">

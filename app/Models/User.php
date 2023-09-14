@@ -101,4 +101,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(KelasMurid::class, 'id', 'murid_id');
     }
+
+    public function masterBiaya()
+    {
+        return $this->belongsTo(MasterPayment::class, 'id', 'user_id');
+    }
 }
