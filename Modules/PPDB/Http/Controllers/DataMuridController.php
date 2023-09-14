@@ -2,7 +2,6 @@
 
 namespace Modules\PPDB\Http\Controllers;
 
-use Validator;
 use ErrorException;
 use App\Models\User;
 use App\Models\dataMurid;
@@ -12,6 +11,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\SPP\Entities\PaymentSpp;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Modules\SPP\Entities\DetailPaymentSpp;
 use Illuminate\Contracts\Support\Renderable;
 
@@ -53,7 +53,7 @@ class DataMuridController extends Controller
      */
     public function show($id)
     {
-        $murid = User::with('muridDetail', 'dataOrtu', 'berkas')->where('role', 'Guest')->find($id);
+        $murid = User::with('muridDetail', 'dataOrtu', 'berkas', 'masterBiaya')->where('role', 'Guest')->find($id);
         // if (!$murid->muridDetail->agama || !$murid->dataOrtu->nama_ayah || !$murid->berkas->kartu_keluarga) {
         //     Session::flash('error', 'Calon Siswa Belum Input Biodata Diri !');
         //     return redirect('/ppdb/data-murid');
@@ -158,7 +158,7 @@ class DataMuridController extends Controller
                     'payment_id'  => $payment->id,
                     'user_id'     => $murid,
                     'month'       => date('F'),
-                    'amount'      => $biaya->biaya . $murid . $generate,
+                    'amount'      => $biaya == null ? 0 : $biaya->biaya . $murid . $generate,
                     'status'      => 'unpaid',
                     'file'        => null,
                 ]);
