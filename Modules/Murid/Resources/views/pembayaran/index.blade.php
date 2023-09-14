@@ -78,7 +78,7 @@
                                                         @if ($payments->status == 'paid')
                                                           <span class="badge badge-info">Pembayaran Diterima</span>
                                                         @else
-                                                          <a href="{{route('pembayaran.edit', $payments->id)}}" class="btn btn-success btn-sm">{{$payments->file != null ? 'Pembayaran Diproses' : 'Bayar'}}</a>
+                                                          <a href="{{route('pembayaran.edit', $payments->id)}}" class="btn btn-success btn-sm {{$payments->amount == 0 ? 'disabled' : ''}}">{{$payments->file != null ? 'Pembayaran Diproses' : 'Bayar'}}</a>
                                                         @endif
                                                     </td>
                                                 </tr>
