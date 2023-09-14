@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MasterPayment;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Modules\SPP\Entities\DetailPaymentSpp;
 
 class MuridController extends Controller
 {
@@ -196,6 +197,10 @@ class MuridController extends Controller
                 'user_id'   => $murid->id,
                 'biaya'     => $request->biaya
             ]);
+
+            $payment = DetailPaymentSpp::where('user_id', $murid->id)->where('status', 'unpaid')->first();
+            $payment->amount = $request->biaya;
+            $payment->update();
 
             DB::commit();
             Session::flash('success', 'Calon Murid Berhasil diupdate !');
