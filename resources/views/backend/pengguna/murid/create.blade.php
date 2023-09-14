@@ -42,7 +42,7 @@
                         <form action=" {{route('backend-pengguna-murid.store')}} " method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Nama</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value=" {{old('name')}} " placeholder="Nama" />
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Email</label> <span class="text-danger">*</span>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value=" {{old('email')}} " placeholder="Email" />
@@ -85,8 +85,20 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Password</label> <span class="text-danger">*</span>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value=" {{old('password')}} " placeholder="password" />
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value=" {{old('password')}}" placeholder="password" autofocus/>
                                         @error('password')
+                                            <div class="invalid-feedback">
+                                            <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="basicInput">Nominal Biaya Pembayaran</label> <span class="text-danger">*</span>
+                                        <input type="text" class="form-control @error('biaya') is-invalid @enderror" name="biaya" placeholder="Masukan Nominal Biaya Pembayaran" />
+                                        @error('biaya')
                                             <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
                                             </div>

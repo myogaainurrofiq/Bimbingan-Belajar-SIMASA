@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Status</label> <span class="text-danger">*</span>
                                         <select name="status" class="form-control @error('status') is-invalid @enderror">
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Role</label> <span class="text-danger">*</span>
                                         <select name="role" class="form-control @error('role') is-invalid @enderror">
@@ -92,6 +92,18 @@
                                             <option value="Guest" {{$murid->role == 'Guest' ? 'selected' : ''}} >Guest</option>
                                         </select>
                                         @error('role')
+                                            <div class="invalid-feedback">
+                                            <strong>{{ $message }}</strong>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="basicInput">Nominal Biaya Pembayaran</label> <span class="text-danger">*</span>
+                                        <input type="text" class="form-control @error('biaya') is-invalid @enderror" name="biaya" value="{{$murid->masterBiaya->biaya ?? 0}} " placeholder="Masukan Nominal Biaya Pembayaran" />
+                                        @error('biaya')
                                             <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
                                             </div>

@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Backend\Pengguna;
 
-use App\Http\Controllers\Controller;
-use App\Models\dataMurid;
+use ErrorException;
 use App\Models\User;
+use App\Models\dataMurid;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use ErrorException;
-use Session;
-use DB;
-use Validator;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\MasterPayment;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class MuridController extends Controller
 {
@@ -21,7 +22,7 @@ class MuridController extends Controller
      */
     public function index()
     {
-        $murid = User::whereIn('role',['Guest','Murid'])->get();
+        $murid = User::whereIn('role', ['Guest', 'Murid'])->get();
         return view('backend.pengguna.murid.index', compact('murid'));
     }
 
@@ -46,16 +47,21 @@ class MuridController extends Controller
         try {
             DB::beginTransaction();
 
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|max:255',
-                'email' => 'required|email|unique:users',
-            ],
-            [
-                'name.required'     => 'Nama tidak boleh kosong.',
-                'email.required'    => 'Email tidak boleh kosong.',
-                'email.unique'      => 'Email sudah pernah digunakan.',
-                'email.email'       => 'Email yang dimasukan tidak valid.'
-            ]
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'name'      => 'required|max:255',
+                    'email'     => 'required|email|unique:users',
+                    'biaya'     => 'required|numeric'
+                ],
+                [
+                    'name.required'     => 'Nama tidak boleh kosong.',
+                    'email.required'    => 'Email tidak boleh kosong.',
+                    'email.unique'      => 'Email sudah pernah digunakan.',
+                    'email.email'       => 'Email yang dimasukan tidak valid.',
+                    'biaya.required'    => 'Nominal Biaya Pembayaran tidak boleh kosong.',
+                    'biaya.numeric'     => 'Nominal Biaya Pembayaran tidak valid.'
+                ]
             );
 
             if ($validator->fails()) {
@@ -68,10 +74,10 @@ class MuridController extends Controller
 
             if ($request->foto_profile) {
                 $image = $request->file('foto_profile');
-                $nama_img = time()."_".$image->getClientOriginalName();
+                $nama_img = time() . "_" . $image->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
                 $tujuan_upload = 'public/images/profile';
-                $image->storeAs($tujuan_upload,$nama_img);
+                $image->storeAs($tujuan_upload, $nama_img);
             }
 
             // Pilih kalimat
@@ -84,7 +90,7 @@ class MuridController extends Controller
             $murid->email           = $request->email;
             $murid->role            = 'Guest';
             $murid->foto_profile    = $nama_img ?? '';
-            $murid->password        = bcrypt( $request->password);
+            $murid->password        = bcrypt($request->password);
             $murid->save();
 
             if ($murid) {
@@ -94,9 +100,15 @@ class MuridController extends Controller
             }
 
             $murid->assignRole($murid->role);
-            
+
+            // Setting biaya murid
+            MasterPayment::updateOrCreate([
+                'user_id'   => $murid->id,
+                'biaya'     => $request->biaya
+            ]);
+
             DB::commit();
-            Session::flash('success','Calon Murid Berhasil disimpan !');
+            Session::flash('success', 'Calon Murid Berhasil disimpan !');
             return redirect()->route('backend-pengguna-murid.index');
         } catch (ErrorException $e) {
             DB::rollback();
@@ -123,7 +135,7 @@ class MuridController extends Controller
      */
     public function edit($id)
     {
-        $murid = User::whereIn('role',['Guest','Murid'])->find($id);
+        $murid = User::with('masterBiaya')->whereIn('role', ['Guest', 'Murid'])->find($id);
         return view('backend.pengguna.murid.edit', compact('murid'));
     }
 
@@ -139,21 +151,26 @@ class MuridController extends Controller
         try {
             DB::beginTransaction();
 
-            $validator = Validator::make($request->all(), [
-                'name'      => 'required|max:255',
-                'email'     => 'required',
-                'status'    => ['required',Rule::in(['Aktif','Tidak Aktif'])],
-                'role'      => ['required',Rule::in(['Murid','Guest'])],
-            ],
-            [
-                'name.required'     => 'Nama tidak boleh kosong.',
-                'email.required'    => 'Email tidak boleh kosong.',
-                'email.email'       => 'Email yang dimasukan tidak valid.',
-                'status.required'   => 'Status Murid harus dipilih.',
-                'status.in'         => 'Status yang dipilih tidak valid.',
-                'role.required'     => 'Role Murid harus dipilih.',
-                'role.in'           => 'Role yang dipilih tidak valid.'
-            ]
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'name'      => 'required|max:255',
+                    'email'     => 'required',
+                    'status'    => ['required', Rule::in(['Aktif', 'Tidak Aktif'])],
+                    'role'      => ['required', Rule::in(['Murid', 'Guest'])],
+                    'biaya'     => 'required|numeric'
+                ],
+                [
+                    'name.required'     => 'Nama tidak boleh kosong.',
+                    'email.required'    => 'Email tidak boleh kosong.',
+                    'email.email'       => 'Email yang dimasukan tidak valid.',
+                    'status.required'   => 'Status Murid harus dipilih.',
+                    'status.in'         => 'Status yang dipilih tidak valid.',
+                    'role.required'     => 'Role Murid harus dipilih.',
+                    'role.in'           => 'Role yang dipilih tidak valid.',
+                    'biaya.required'    => 'Nominal Biaya Pembayaran tidak boleh kosong.',
+                    'biaya.numeric'     => 'Nominal Biaya Pembayaran tidak valid.'
+                ]
             );
 
             if ($validator->fails()) {
@@ -171,11 +188,17 @@ class MuridController extends Controller
             $murid->status          = $request->status;
             $murid->update();
 
-            DB::table('model_has_roles')->where('model_id',$id)->delete();
+            DB::table('model_has_roles')->where('model_id', $id)->delete();
             $murid->assignRole($request->role);
 
+            // Setting biaya murid
+            MasterPayment::updateOrCreate([
+                'user_id'   => $murid->id,
+                'biaya'     => $request->biaya
+            ]);
+
             DB::commit();
-            Session::flash('success','Calon Murid Berhasil diupdate !');
+            Session::flash('success', 'Calon Murid Berhasil diupdate !');
             return redirect()->route('backend-pengguna-murid.index');
         } catch (ErrorException $e) {
             DB::rollback();

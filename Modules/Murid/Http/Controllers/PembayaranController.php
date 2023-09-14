@@ -3,6 +3,7 @@
 namespace Modules\Murid\Http\Controllers;
 
 use App\Models\Bank;
+use App\Models\MasterPayment;
 use App\Models\User;
 use Carbon\Carbon;
 use ErrorException;
@@ -43,9 +44,8 @@ class PembayaranController extends Controller
     {
         $accountbanks = User::with('banks')->first();
         $bank = Bank::all();
-        $generate = 300 . Auth::id() . rand(10, 100);
         $getBln = Carbon::now()->addMonths(1)->format('F');
-        return view('murid::pembayaran.tambah_pembayaran', compact('accountbanks', 'bank', 'generate', 'getBln'));
+        return view('murid::pembayaran.tambah_pembayaran', compact('accountbanks', 'bank', 'getBln'));
     }
 
     /**
@@ -59,6 +59,7 @@ class PembayaranController extends Controller
             DB::beginTransaction();
             $cekPayment = PaymentSpp::where('user_id', Auth::id())->where('year', date('Y'))->first();
             $getBln = Carbon::now()->addMonths(1)->format('F');
+            $biaya = MasterPayment::where('user_id', Auth::id())->first();
 
             if (!$cekPayment) {
                 $payment = PaymentSpp::create([
@@ -84,7 +85,7 @@ class PembayaranController extends Controller
                 'destination_bank'  => $request->destination_bank,
                 'month'             => $getBln,
                 'status'            => 'unpaid',
-                'amount'            => $request->amount,
+                'amount'            => $biaya->biaya . rand(10, 100),
                 'file'              => $file_payment,
                 'date_file'         => Carbon::now()
             ]);
