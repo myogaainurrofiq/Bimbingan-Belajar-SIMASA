@@ -94,7 +94,7 @@
 
                             <div class="form-group">
                                 <label for="Jumlah">Jumlah</label>
-                                <input type="text" value="Rp {{number_format($generate)}}" class="form-control" placeholder="Jumlah" readonly disabled>
+                                <input type="text" value="Rp {{number_format($biaya->biaya)}}" class="form-control" placeholder="Jumlah" readonly disabled>
                             </div>
 
                             <div class="form-group">
@@ -127,11 +127,11 @@
                     <div class="d-flex justify-content-between">
                         @php
                             $p = new NumberFormatter("id", NumberFormatter::SPELLOUT);
-                            $result = preg_replace("/\..+/", "", $generate);
+                            $result = preg_replace("/\..+/", "", $biaya->biaya);
                         @endphp
                     <span>
                         Jumlah :
-                        <span style="font-weight: bold">Rp {{number_format($generate)}}</span>
+                        <span style="font-weight: bold">Rp {{number_format($biaya->biaya)}}</span>
                         <small style="font-style: italic; font-size:10px; color:brown">{{ ucwords($p->format($result))}} Rupiah</small>
                     </span>
                     <span style="font-size: 21px">
