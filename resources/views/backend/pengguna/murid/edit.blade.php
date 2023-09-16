@@ -111,7 +111,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">Update</button>
+                            @if ($murid->payment != null)
+                                <button class="btn btn-primary" type="submit">Update</button>
+                            @else
+                                <a href="" class="btn btn-info disabled">Update</a>
+                            @endif
                             <a href="{{route('backend-pengguna-murid.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

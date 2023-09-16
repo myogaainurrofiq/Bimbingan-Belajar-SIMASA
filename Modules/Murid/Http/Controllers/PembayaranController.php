@@ -45,7 +45,8 @@ class PembayaranController extends Controller
         $accountbanks = User::with('banks')->first();
         $bank = Bank::all();
         $getBln = Carbon::now()->addMonths(1)->format('F');
-        return view('murid::pembayaran.tambah_pembayaran', compact('accountbanks', 'bank', 'getBln'));
+        $biaya = MasterPayment::where('user_id', Auth::id())->first();
+        return view('murid::pembayaran.tambah_pembayaran', compact('accountbanks', 'bank', 'getBln', 'biaya'));
     }
 
     /**
