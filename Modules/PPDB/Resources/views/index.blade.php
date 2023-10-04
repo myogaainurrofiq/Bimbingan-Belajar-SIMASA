@@ -18,8 +18,9 @@
     @section('why')
         @include('ppdb::frontend.content.why')
     @endsection
-
+   
     @section('video')
         @include('ppdb::frontend.content.video')
     @endsection
+
 @endsection

@@ -1,4 +1,4 @@
-<div class="faq-page-area">
+<div id="keunggulane" class="faq-page-area">
     <div class="container">
         <h1 class="about-title">Kenapa Harus Savaana Course ?</h1>
         <div class="row panel-group" id="faq-accordian">

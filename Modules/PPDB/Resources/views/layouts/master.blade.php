@@ -42,6 +42,7 @@
         
         @yield('video')
 
+
         <!-- Footer Area Start Here -->
         <footer>
             @include('ppdb::layouts.footer')

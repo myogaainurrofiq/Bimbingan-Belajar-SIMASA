@@ -11,10 +11,9 @@
                     <div class="col-lg-6 col-md-6 col-sm-9">
                         <nav id="desktop-nav">
                             <ul>
-                                <li><a href="#">Program Studi</a></li>
-                                <li><a href="#">Alur Pendaftaran</a></li>
-                                <li><a href="#">Berkas</a></li>
-                                <li><a href="#">Biaya</a></li>
+                                <li><a href="#programe">Program & Biaya</a></li>
+                                <li><a href="#keunggulane">Keunggulan Savaana</a></li>
+                                <li><a href="#videone">Video Profil</a></li>
                             </ul>
                         </nav>
                     </div>
