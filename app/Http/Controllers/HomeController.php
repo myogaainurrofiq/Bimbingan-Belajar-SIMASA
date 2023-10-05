@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Perpustakaan\Entities\Book;
 use Modules\Perpustakaan\Entities\Borrowing;
 use Modules\Perpustakaan\Entities\Member;
+use Modules\SPP\Entities\DetailPaymentSpp;
 
 class HomeController extends Controller
 {
@@ -105,7 +106,11 @@ class HomeController extends Controller
 
             // DASHBOARD BENDAHARA \\
             elseif ($role == 'Bendahara') {
-                return view('spp::index');
+                $month = DetailPaymentSpp::whereMonth('created_at', Carbon::now()->format('m'))->count();
+                $year = DetailPaymentSpp::whereYear('created_at', Carbon::now()->format('Y'))->count();
+                $paid = DetailPaymentSpp::whereYear('created_at', Carbon::now()->format('Y'))->where('status', 'paid')->count();
+                $unpaid = DetailPaymentSpp::whereYear('created_at', Carbon::now()->format('Y'))->where('status', 'unpaid')->count();
+                return view('spp::index', compact('month', 'year', 'paid', 'unpaid'));
             }
         }
     }
