@@ -227,7 +227,7 @@
                     <span class="menu-title text-truncate" data-i18n="Publisher">Publisher</span>
                 </a>
               </li>
-              <li class="nav-item {{ (request()->is('books/author')) ? 'active' : '' }}">
+              <li class="nav-item {{ (request()->is('perpus/author')) ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{route('author.index')}}"><i data-feather="user-check"></i>
                     <span class="menu-title text-truncate" data-i18n="Authors">Authors</span>
                 </a>
