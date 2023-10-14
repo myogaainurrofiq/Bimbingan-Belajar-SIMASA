@@ -165,7 +165,7 @@
                     <span class="menu-title text-truncate" data-i18n="Card">Data Kelas</span>
                 </a>
              </li>
-            <li class=" nav-item">
+            {{-- <li class=" nav-item">
 
                 <a class="d-flex align-items-center" href="#"><i data-feather="user"></i>
                     <span class="menu-title text-truncate" data-i18n="Card">Data Murid</span>
@@ -187,7 +187,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             {{-- MENU GUEST --}}
             @elseif(Auth::user()->role == 'Guest')
