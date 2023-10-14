@@ -104,12 +104,12 @@
                             <div class="mt-75">
                                 @foreach ($populer as $populers)
                                   <div class="media mb-2">
-                                    <a href="page-blog-detail.html" class="mr-2">
+                                    <a href="#" class="mr-2">
                                         <img class="rounded" src="{{asset('storage/images/thumbnail/' .$populers->thumbnail)}}" width="100" height="70" alt="Recent Post Pic" />
                                     </a>
                                     <div class="media-body">
                                         <h6 class="blog-recent-post-title">
-                                            <a href="page-blog-detail.html" class="text-body-heading">{{$populers->name}}</a>
+                                            <a href="#" class="text-body-heading">{{$populers->name}}</a>
                                         </h6>
                                         <small class="text-muted mb-0">Total Dipinjam {{$populers->borrowings_count}} </small>
                                     </div>
