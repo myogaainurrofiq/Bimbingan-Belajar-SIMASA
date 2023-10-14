@@ -34,7 +34,6 @@
                       <h5>Selamat 🎉 {{Auth::user()->name}}!</h5>
                       <p class="card-text font-small-3">Kamu Peringkat Pertama</p>
                       <h3 class="mb-75 mt-4">
-                          <a href="javascript:void(0);">Rangking 1</a>
                       </h3>
                       <button type="button" class="btn btn-primary">Lihat Semua Peringkat</button>
                       <img src="{{asset('Assets/Backend/images/illustration/badge.svg')}}" class="congratulation-medal" alt="Medal Pic" />
