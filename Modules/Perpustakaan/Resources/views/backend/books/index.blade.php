@@ -52,7 +52,6 @@
                                                 <th>Penerbit</th>
                                                 <th>Penulis</th>
                                                 <th>Kategori</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -65,9 +64,6 @@
                                                     <td> {{$books->publisher->name}} </td>
                                                     <td> {{$books->author->name}} </td>
                                                     <td> {{$books->category->name}} </td>
-                                                    <td>
-                                                        <a href="" class="btn btn-success btn-sm">Detail</a>
-                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
