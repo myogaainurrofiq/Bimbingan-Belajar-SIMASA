@@ -16,10 +16,12 @@ class PerpustakaanController extends Controller
      */
     public function index()
     {
-      $book = Book::all();
-      $populer = Book::withCount('borrowings')->get()->take(4);
-      // dd($populer);
-      return view('murid::perpustakaan.index', compact('book','populer'));
+        $book = Book::all();
+        $populer = Book::withCount(['borrowings as count' => function ($x) {
+            $x->orderBy('count', 'desc');
+        }])->get()->take(4);
+        // dd($populer);
+        return view('murid::perpustakaan.index', compact('book', 'populer'));
     }
 
     /**
