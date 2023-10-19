@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-    Staf PPDB Sekolah
+    Staf PPDB Savaana
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Staf PPDB Sekolah</h2>
+                    <h2> Staf PPDB Savaana</h2>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Staf PPDB Sekolah <a href=" {{route('backend-pengguna-ppdb.create')}} " class="btn btn-primary">Tambah</a> </h4>
+                                    <h4 class="card-title">Staf PPDB Savaana <a href=" {{route('backend-pengguna-ppdb.create')}} " class="btn btn-primary">Tambah</a> </h4>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
