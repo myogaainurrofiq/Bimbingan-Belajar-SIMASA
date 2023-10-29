@@ -96,7 +96,7 @@
 
                                     <div class="col-3">
                                         <div class="form-group">
-                                            <label for="basicInput">Logo Sekolah</label> <span class="text-danger">*</span>
+                                            <label for="basicInput">Logo Savaana</label> <span class="text-danger">*</span>
                                             <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" value=" {{old('logo')}} " />
                                             <small class="text-danger" style="font-size: 10px">Ukuran yang disarankan 168x41 dengan format .png.</small>
                                             @error('logo')
@@ -145,7 +145,7 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="basicInput">Deskripsi Singkat Sekolah</label> <span class="text-danger">*</span>
+                                            <label for="basicInput">Deskripsi Singkat Savaana</label> <span class="text-danger">*</span>
                                             <textarea name="desc" class="form-control @error('desc') is-invalid @enderror" rows="3"> {{old('desc')}} </textarea>
                                             @error('desc')
                                                 <div class="invalid-feedback">
@@ -217,7 +217,7 @@
 
                                 <div class="col-3">
                                     <div class="form-group">
-                                        <label for="basicInput">Logo Sekolah</label> <span class="text-danger">*</span>
+                                        <label for="basicInput">Logo Savaana</label> <span class="text-danger">*</span>
                                         <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" value=" {{$footer->logo}} " />
                                         <small class="text-danger" style="font-size: 10px">Ukuran yang disarankan 168x41 dengan format .png.</small>
                                         @error('logo')
@@ -266,7 +266,7 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="basicInput">Deskripsi Singkat Sekolah</label> <span class="text-danger">*</span>
+                                        <label for="basicInput">Deskripsi Singkat Savaana</label> <span class="text-danger">*</span>
                                         <textarea name="desc" class="form-control @error('desc') is-invalid @enderror" rows="3"> {{$footer->desc}} </textarea>
                                         @error('desc')
                                             <div class="invalid-feedback">

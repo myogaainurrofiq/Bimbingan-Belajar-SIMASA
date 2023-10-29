@@ -14,7 +14,7 @@
                 <div class="row">
                   <div div class="col-6">
                       <div class="form-group">
-                          <label for="basicInput">NISN</label>
+                          <label for="basicInput">NP</label>
                           <input type="text" class="form-control" id="nisn" readonly>
                       </div>
                   </div>

@@ -89,11 +89,11 @@ class DataMuridController extends Controller
                 ],
                 [
                     'nis.required'      => 'NIS tidak boleh kosong.',
-                    'nisn.required'     => 'NISN tidak boleh kosong.',
+                    'nisn.required'     => 'NP tidak boleh kosong.',
                     'nis.numeric'       => 'NIS hanya mendukung angka.',
                     'nis.unique'        => 'NIS sudah pernah digunakan.',
-                    'nisn.numeric'      => 'NISN hanya mendukung angka.',
-                    'nisn.unique'       => 'NISN sudah pernah digunakan.',
+                    'nisn.numeric'      => 'NP hanya mendukung angka.',
+                    'nisn.unique'       => 'NP sudah pernah digunakan.',
                 ]
             );
 

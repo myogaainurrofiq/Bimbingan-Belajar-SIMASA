@@ -71,7 +71,7 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="basicInput">NISN</label>
+                                        <label for="basicInput">NP</label>
                                         <input type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" value=" {{$murid->muridDetail->nisn}} " />
                                         @error('nisn')
                                             <div class="invalid-feedback">

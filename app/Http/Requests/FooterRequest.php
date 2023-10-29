@@ -46,7 +46,7 @@ class FooterRequest extends FormRequest
             'instagram.required'    => 'Akun Instagram tidak boleh kosong',
             'twitter.required'      => 'Akun Twitter tidak boleh kosong',
             'facebook.required'     => 'Akun Youtube Facebook boleh kosong',
-            'logo.required'         => 'Logo Sekolah tidak boleh kosong',
+            'logo.required'         => 'Logo Bimbel tidak boleh kosong',
             'logo.image'            => 'File Logo yang dimasukan tidak valid.',
             'logo.max'              => 'Maksimal File Logo tidak boleh lebih dari 1MB.',
             'whatsapp.required'     => 'Nomor WhatsApp tidak boleh kosong',
@@ -55,7 +55,7 @@ class FooterRequest extends FormRequest
             'telp.numeric'          => 'Nomor Telepon hanya mendukun number.',
             'email.required'        => 'Email tidak boleh kosong',
             'email.email'           => 'Email yang dimasukan tidak valid.',
-            'desc.required'         => 'Deskripsi Sekolah tidak boleh kosong',
+            'desc.required'         => 'Deskripsi Bimbel tidak boleh kosong',
         ];
     }
 }

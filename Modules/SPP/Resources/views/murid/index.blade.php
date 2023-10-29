@@ -47,7 +47,7 @@
                                             <tr>
                                                 <th></th>
                                                 <th>No</th>
-                                                <th>NISN</th>
+                                                <th>NP</th>
                                                 <th>Nama</th>
                                                 <th>Email</th>
                                                 <th>Pembayaran Bulan {{Date('F')}} </th>
