@@ -56,12 +56,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                    <a class="nav-link" id="settings" data-toggle="pill" href="#account-setting" aria-expanded="false">
-                                        <i data-feather="bell" class="font-medium-3 mr-1"></i>
-                                        <span class="font-weight-bold">Notifications</span>
-                                    </a>
-                                </li>
+                            
                         </ul>
                     </div>
                     <!--/ left menu section -->
@@ -159,37 +154,7 @@
                                       @endif
                                     </div>
 
-                                    {{-- Notifications --}}
-                                    <div class="tab-pane fade" id="account-setting" role="tabpanel" aria-labelledby="settings" aria-expanded="false">
-                                        <form action="{{url('settings/notifications', Auth::id())}}" method="post">
-                                        @csrf
-                                        @method('PUT')
-                                            <div class="row">
-                                                <h5 class="m-1">Email</h5>
-                                                <div class="col-12 mb-1">
-                                                    <div class="custom-control custom-switch custom-control-inline">
-                                                        <input type="checkbox" class="custom-control-input" name="isEmail" {{Auth::user()->setting->isEmail == 1 ? 'checked' : 0}} value="1" id="email">
-                                                        <label class="custom-control-label mr-1" for="email"></label>
-                                                        <span class="switch-label w-100">Aktifkan Jika Ingin Menggunakan Email Notification</span>
-                                                    </div>
-                                                </div>
-
-                                                <h5 class="m-1">WhatsApp</h5>
-                                                <div class="col-12 mb-1">
-                                                    <div class="custom-control custom-switch custom-control-inline">
-                                                        <input type="checkbox" class="custom-control-input" name="isWhatsApp" value="1" id="isWhatsApp" disabled>
-                                                        <label class="custom-control-label mr-1" for="isWhatsApp"></label>
-                                                        <span class="switch-label w-100">Aktifkan Jika Ingin Mendapatkan WhatsApp Notification</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 d-flex flex-sm-row flex-column justify-content-start">
-                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Update</button>
-                                                <button type="reset" class="btn btn-outline-warning">Batal</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
