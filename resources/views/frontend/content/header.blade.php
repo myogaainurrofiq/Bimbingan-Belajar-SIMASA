@@ -16,8 +16,8 @@
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                     <div class="header-top-right">
                         <ul>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{@$footer->telp}}"> {{@$footer->telp}} </a></li>
-                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">{{@$footer->email}}</a></li>
+                            <li><a href="https://api.whatsapp.com/send/?phone=62895324071029"><i class="fa fa-phone" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/savaana_course/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                             <li>
                                 @auth
                                     <a href="/home" class="apply-now-btn2">Home</a>
