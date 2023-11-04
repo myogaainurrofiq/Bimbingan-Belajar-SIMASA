@@ -73,6 +73,14 @@
                                         <select name="mengajar" class="form-control @error('mengajar') is-invalid @enderror">
                                             <option value="">-- Pilih --</option>
                                             <option value="Matematika" {{$pengajar->userDetail->mengajar == 'Matematika' ? 'selected' : ''}} >Matematika</option>
+                                            <option value="Fisika" {{$pengajar->userDetail->mengajar == 'Fisika' ? 'selected' : ''}} >Fisika</option>
+                                            <option value="IPA" {{$pengajar->userDetail->mengajar == 'IPA' ? 'selected' : ''}} >IPA</option>
+                                            <option value="B.Indonesia" {{$pengajar->userDetail->mengajar == 'B.Indonesia' ? 'selected' : ''}}>B.Indonesia</option>
+                                            <option value="B.Inggris" {{$pengajar->userDetail->mengajar == 'B.Inggris' ? 'selected' : ''}}>B.Inggris</option>
+                                            <option value="Kimia" {{$pengajar->userDetail->mengajar == 'Kimia' ? 'selected' : ''}}>Kimia</option>
+                                            <option value="Geografi" {{$pengajar->userDetail->mengajar == 'Geografi' ? 'selected' : ''}}>Geografi</option>
+                                            <option value="Biologi" {{$pengajar->userDetail->mengajar == 'Biologi' ? 'selected' : ''}}>Biologi</option>
+                                            <option value="Ekonomi" {{$pengajar->userDetail->mengajar == 'Ekonomi' ? 'selected' : ''}}>Ekonomi</option>
                                         </select>
                                         @error('mengajar')
                                             <div class="invalid-feedback">

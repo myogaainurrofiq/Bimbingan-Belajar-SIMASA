@@ -72,6 +72,15 @@
                                         <select name="mengajar" class="form-control @error('mengajar') is-invalid @enderror">
                                             <option value="">-- Pilih --</option>
                                             <option value="Matematika">Matematika</option>
+                                            <option value="Fisika">Fisika</option>
+                                            <option value="IPA">IPA</option>
+                                            <option value="B.Indonesia">B.Indonesia</option>
+                                            <option value="B.Inggris">B.Inggris</option>
+                                            <option value="Kimia">Kimia</option>
+                                            <option value="Geografi">Geografi</option>
+                                            <option value="Biologi">Biologi</option>
+                                            <option value="Ekonomi">Ekonomi</option>
+
                                         </select>
                                         @error('mengajar')
                                             <div class="invalid-feedback">
