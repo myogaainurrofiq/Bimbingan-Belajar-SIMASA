@@ -32,10 +32,9 @@
               <div class="card card-congratulation-medal">
                   <div class="card-body">
                       <h5>Selamat 🎉 {{Auth::user()->name}}!</h5>
-                      <p class="card-text font-small-3">Kamu Peringkat Pertama</p>
-                      <h3 class="mb-75 mt-4">
-                      </h3>
-                      <button type="button" class="btn btn-primary">Lihat Semua Peringkat</button>
+                      <p class="card-text font-small-3">Kamu Menjadi bagian dari Savaana </p>
+                      <p class="card-text font-small-3">Mari kita bersama meraih mimpi </p>
+                      <h3 class="mb-75 mt-4"></h3>
                       <img src="{{asset('Assets/Backend/images/illustration/badge.svg')}}" class="congratulation-medal" alt="Medal Pic" />
                   </div>
               </div>
