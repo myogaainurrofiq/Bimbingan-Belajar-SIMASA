@@ -62,7 +62,7 @@
                                               <td> {{$key+1}} </td>
                                               <td>{{$detail->month}}</td>
                                               <td>Rp {{number_format($detail->amount)}}</td>
-                                              <td><span class="badge badge-{{$detail->status == 'paid' ? 'info' : 'warning'}}">{{$detail->status}}</span></td>
+                                              <td><span class="badge badge-{{$detail->status == 'paid' ? 'info' : 'warning'}}">{{$detail->status == 'unpaid' && $detail->file != null ? 'Pending' : $detail->status}}</span></td>
                                               <td>{{$detail->aprroveBy->name ?? '-'}}</td>
                                               <td>{{$detail->approve_date ?? '-'}}</td>
                                               <td>

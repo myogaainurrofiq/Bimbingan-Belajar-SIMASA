@@ -12,6 +12,7 @@ use Modules\Perpustakaan\Entities\Book;
 use Modules\Perpustakaan\Entities\Borrowing;
 use Modules\Perpustakaan\Entities\Member;
 use Modules\SPP\Entities\DetailPaymentSpp;
+use Modules\SPP\Entities\PaymentSpp;
 
 class HomeController extends Controller
 {
@@ -79,7 +80,9 @@ class HomeController extends Controller
                         });
                     })
                     ->count();
-
+                if (CekPayment() == 'unpaid') {
+                    return redirect()->route('pembayaran.create');
+                }
                 return view('murid::index', compact('event', 'lateness', 'pinjam'));
             } elseif ($role == 'Guru' || $role == 'Staf') {
 

@@ -5,7 +5,23 @@
 @endsection
 
 @section('content')
+
 <div class="content-wrapper container-xxl p-0">
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+            <div class="alert-body">
+                <strong>{{ $message }}</strong>
+                <button type="button" class="close" data-dismiss="alert">×</button>
+            </div>
+        </div>
+    @elseif($message = Session::get('error'))
+        <div class="alert alert-danger" role="alert">
+            <div class="alert-body">
+                <strong>{{ $message }}</strong>
+                <button type="button" class="close" data-dismiss="alert">×</button>
+            </div>
+        </div>
+    @endif
     <div class="content-body">
         <div class="row">
             <div class="col-lg-7 col-md-12 col-sm-12">
