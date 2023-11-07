@@ -27,13 +27,11 @@ class PembayaranController extends Controller
     {
         $cek = false;
         $payment = DetailPaymentSpp::with('payment')->where('user_id', Auth::id())->get();
-        $getBln = Carbon::now()->addMonths(1)->format('F');
+        $getBln = Carbon::now()->format('F');
         $monthNow = Carbon::now()->format('F');
         $cekPayment = PaymentSpp::where('user_id', Auth::id())->first();
-        if ($cekPayment->$monthNow == 'paid' && $cekPayment->$getBln == 'unpaid') {
-            $cek = true;
-        }
-        return view('murid::pembayaran.index', compact('payment', 'cek', 'cekPayment'));
+        $data = $cekPayment->$monthNow;
+        return view('murid::pembayaran.index', compact('payment', 'cek', 'cekPayment', 'data'));
     }
 
     /**
@@ -44,8 +42,12 @@ class PembayaranController extends Controller
     {
         $accountbanks = User::with('banks')->first();
         $bank = Bank::all();
-        $getBln = Carbon::now()->addMonths(1)->format('F');
+        $getBln = Carbon::now()->format('F');
         $biaya = MasterPayment::where('user_id', Auth::id())->first();
+        if (!$biaya) {
+            Session::flash('error', 'Biaya belum ditentukan, silahkan hubungi Admin.');
+            return redirect('home');
+        }
         return view('murid::pembayaran.tambah_pembayaran', compact('accountbanks', 'bank', 'getBln', 'biaya'));
     }
 
@@ -59,7 +61,7 @@ class PembayaranController extends Controller
         try {
             DB::beginTransaction();
             $cekPayment = PaymentSpp::where('user_id', Auth::id())->where('year', date('Y'))->first();
-            $getBln = Carbon::now()->addMonths(1)->format('F');
+            $getBln = Carbon::now()->format('F');
             $biaya = MasterPayment::where('user_id', Auth::id())->first();
 
             if (!$cekPayment) {
@@ -69,6 +71,32 @@ class PembayaranController extends Controller
                     'is_active' =>  1
                 ]);
             }
+            if ($getBln == 'January') {
+                $cekPayment->January = 'pending';
+            } elseif ($getBln == 'February') {
+                $cekPayment->February = 'pending';
+            } elseif ($getBln == 'March') {
+                $cekPayment->March = 'pending';
+            } elseif ($getBln == 'April') {
+                $cekPayment->April = 'pending';
+            } elseif ($getBln == 'May') {
+                $cekPayment->May = 'pending';
+            } elseif ($getBln == 'June') {
+                $cekPayment->June = 'pending';
+            } elseif ($getBln == 'July') {
+                $cekPayment->July = 'pending';
+            } elseif ($getBln == 'August') {
+                $cekPayment->August = 'pending';
+            } elseif ($getBln == 'September') {
+                $cekPayment->September = 'pending';
+            } elseif ($getBln == 'October') {
+                $cekPayment->October = 'pending';
+            } elseif ($getBln == 'November') {
+                $cekPayment->November = 'pending';
+            } elseif ($getBln == 'December') {
+                $cekPayment->December = 'pending';
+            }
+            $cekPayment->update();
 
             if ($request->file) {
                 $file = $request->file('file');
