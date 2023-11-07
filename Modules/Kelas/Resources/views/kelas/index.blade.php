@@ -70,7 +70,7 @@
                                                     <td>{{$item->hari}}</td>
                                                     <td>{{$item->jam_mulai}} - {{$item->jam_selesai}}</td>
                                                     <td>{{$item->ruangan}}</td>
-                                                    <td>{{$item->mentor->name}}</td>
+                                                    <td>{{$item->mentor->name ?? 'None'}}</td>
                                                     <td>
                                                         <a href="{{route('backend-kelas.edit', $item->id)}}" class="btn btn-info btn-sm">Edit</a>
                                                         <a href="{{route('backend-kelas.show', $item->id)}}" class="btn btn-success btn-sm">Murid</a>
