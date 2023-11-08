@@ -43,7 +43,7 @@ class PembayaranController extends Controller
         $accountbanks = User::with('banks')->first();
         $bank = Bank::all();
         $getBln = Carbon::now()->format('F');
-        $biaya = MasterPayment::where('user_id', Auth::id())->first();
+        $biaya = MasterPayment::where('user_id', Auth::id())->orderBy('created_at', 'desc')->first();
         if (!$biaya) {
             Session::flash('error', 'Biaya belum ditentukan, silahkan hubungi Admin.');
             return redirect('home');
