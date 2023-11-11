@@ -46,19 +46,21 @@
                   </div>
                 </div>
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="font-weight-bolder mb-0">{{@$paid}}</h2>
-                                <p class="card-text">Sudah Lunas</p>
-                            </div>
-                            <div class="avatar bg-light-danger p-50 m-0">
-                                <div class="avatar-content">
-                                    <i data-feather="users" class="font-medium-5"></i>
+                    <a href="{{url('spp/murid?status=paid')}}">
+                        <div class="card">
+                            <div class="card-header">
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{@$paid}}</h2>
+                                    <p class="card-text" style="color: black">Sudah Lunas</p>
+                                </div>
+                                <div class="avatar bg-light-danger p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="users" class="font-medium-5"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
               </div>
             </div>
@@ -80,21 +82,87 @@
                   </div>
                 </div>
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="font-weight-bolder mb-0">{{@$unpaid}}</h2>
-                                <p class="card-text">Belum Lunas</p>
-                            </div>
-                            <div class="avatar bg-light-success p-50 m-0">
-                                <div class="avatar-content">
-                                    <i data-feather="user-check" class="font-medium-5"></i>
+                    <a href="{{url('spp/murid?status=unpaid')}}">
+                        <div class="card">
+                            <div class="card-header">
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{@$unpaid}}</h2>
+                                    <p class="card-text" style="color: black">Belum Lunas</p>
                                 </div>
+                                <div class="avatar bg-light-success p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="user-check" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="font-weight-bolder mb-0">Rp {{number_format($paidAmount)}}</h2>
+                            <p class="card-text">Lunas bulan ini</p>
+                        </div>
+                        <div class="avatar bg-light-success p-50 m-0">
+                            <div class="avatar-content">
+                                <i data-feather="book" class="font-medium-5"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-              </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="font-weight-bolder mb-0">Rp {{number_format($paidAmountY)}}</h2>
+                            <p class="card-text">Lunas Keseluruhan</p>
+                        </div>
+                        <div class="avatar bg-light-success p-50 m-0">
+                            <div class="avatar-content">
+                                <i data-feather="book" class="font-medium-5"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="font-weight-bolder mb-0">Rp {{number_format($unpaidAmount)}}</h2>
+                            <p class="card-text">Belum Lunas bulan ini</p>
+                        </div>
+                        <div class="avatar bg-light-warning p-50 m-0">
+                            <div class="avatar-content">
+                                <i data-feather="book" class="font-medium-5"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="font-weight-bolder mb-0">Rp {{number_format($unpaidAmountY)}}</h2>
+                            <p class="card-text">Belum Lunas Keseluruhan</p>
+                        </div>
+                        <div class="avatar bg-light-warning p-50 m-0">
+                            <div class="avatar-content">
+                                <i data-feather="book" class="font-medium-5"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
