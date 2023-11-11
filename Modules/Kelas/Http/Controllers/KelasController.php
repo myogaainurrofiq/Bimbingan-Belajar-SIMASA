@@ -66,8 +66,12 @@ class KelasController extends Controller
     public function show($id)
     {
         $kelas = Kelas::find($id);
-        $murid = User::whereDoesntHave('kelasMurid')
+        $murid = User::whereDoesntHave('kelasMurid', function ($x) use ($id) {
+            $x->where('kelas_id', $id);
+        })
             ->where('Role', 'Murid')->where('status', 'Aktif')->get();
+        // $murid = User::where('Role', 'murid')->where('status', 'Aktif')->get();
+        // return $murid;
         $kelasAll = KelasMurid::with('murid', 'kelas.mentor')
             ->where('kelas_id', $id)->get();
         return view('kelas::kelas.show', compact('kelas', 'murid', 'kelasAll'));
