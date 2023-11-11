@@ -95,7 +95,7 @@
                                             <th>Tanggal Daftar</th>
                                             <th>Status</th>
                                             <th>Mentor</th>
-                                            {{-- <th>Action</th> --}}
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -108,9 +108,13 @@
                                                 <td>{{$item->created_at}}</td>
                                                 <td>{{$item->murid->status}}</td>
                                                 <td>{{$item->kelas->mentor->name}}</td>
-                                                {{-- <td>
-                                                    <a href="{{route('kelas.edit', $item->id)}}" class="btn btn-info btn-sm">Edit</a>
-                                                </td> --}}
+                                                <td>
+                                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ url('backend-kelas/delete-murid', $item->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

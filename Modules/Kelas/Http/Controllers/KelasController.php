@@ -122,7 +122,13 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Kelas::findOrFail($id);
+        $data->delete();
+
+        $dataKelas = KelasMurid::where('kelas_id', $id)->first();
+        $dataKelas->delete();
+        Session::flash('success', 'Kelas Berhasil di hapus.');
+        return back();
     }
 
     public function tambahMurid(Request $request)
@@ -138,5 +144,13 @@ class KelasController extends Controller
         } catch (\ErrorException $e) {
             throw new ErrorException($e->getMessage());
         }
+    }
+
+    public function deleteMuridKelas($id)
+    {
+        $data = KelasMurid::where('id', $id)->first();
+        $data->delete();
+        Session::flash('success', 'Murid Berhasil di hapus.');
+        return back();
     }
 }

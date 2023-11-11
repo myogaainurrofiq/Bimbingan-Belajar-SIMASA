@@ -72,8 +72,13 @@
                                                     <td>{{$item->ruangan}}</td>
                                                     <td>{{$item->mentor->name ?? 'None'}}</td>
                                                     <td>
+                                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('backend-kelas.destroy', $item->id) }}" method="POST">
                                                         <a href="{{route('backend-kelas.edit', $item->id)}}" class="btn btn-info btn-sm">Edit</a>
                                                         <a href="{{route('backend-kelas.show', $item->id)}}" class="btn btn-success btn-sm">Murid</a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
