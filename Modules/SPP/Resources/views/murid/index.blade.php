@@ -65,7 +65,7 @@
                                                     <td> {{$payments->email}} </td>
                                                     <td>
                                                       @if (Date('m') == 1)
-                                                        <span class="badge badge-{{$payments->payment->January == 'paid' ? 'info' : 'warning'}}">{{strtoupper($payments->payment->January)}}</span>
+                                                        <span class="badge badge-{{$payments->payment->January == 'paid' ? 'info' : 'warning'}}" style="display:{{$payments->payment->January == 'paid' ? 'hidden' : ''}} ">{{strtoupper($payments->payment->January)}}</span>
                                                       @elseif(Date('m') == 2)
                                                         <span class="badge badge-{{$payments->payment->Febuary == 'paid' ? 'info' : 'warning'}}">{{strtoupper($payments->payment->Febuary)}}</span>
                                                       @elseif(Date('m') == 3)
