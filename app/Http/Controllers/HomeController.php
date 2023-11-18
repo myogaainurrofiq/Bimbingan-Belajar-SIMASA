@@ -175,10 +175,10 @@ class HomeController extends Controller
                     ->count();
 
                 $paidAmount = DetailPaymentSpp::whereMonth('approve_date', Carbon::now()->format('m'))->where('status', 'paid')->sum('amount');
-                $unpaidAmount = DetailPaymentSpp::whereMonth('approve_date', Carbon::now()->format('m'))->where('status', 'unpaid')->sum('amount');
+                $unpaidAmount = DetailPaymentSpp::whereMonth('created_at', Carbon::now()->format('m'))->where('status', 'unpaid')->sum('amount');
 
                 $paidAmountY = DetailPaymentSpp::whereYear('approve_date', Carbon::now()->format('Y'))->where('status', 'paid')->sum('amount');
-                $unpaidAmountY = DetailPaymentSpp::whereYear('approve_date', Carbon::now()->format('Y'))->where('status', 'unpaid')->sum('amount');
+                $unpaidAmountY = DetailPaymentSpp::whereYear('created_at', Carbon::now()->format('Y'))->where('status', 'unpaid')->sum('amount');
                 return view('spp::index', compact('month', 'year', 'paid', 'unpaid', 'paidAmount', 'unpaidAmount', 'paidAmountY', 'unpaidAmountY'));
             }
         }
