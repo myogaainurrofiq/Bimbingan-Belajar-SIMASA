@@ -18,14 +18,14 @@ use Modules\Perpustakaan\Http\Requests\BookRequest;
 class BooksController extends Controller
 {
 
-  use GlobalHelpers;
+    use GlobalHelpers;
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        $book = Book::with('publisher','author','category')->get();
+        $book = Book::with('publisher', 'author', 'category')->get();
         return view('perpustakaan::backend.books.index', compact('book'));
     }
 
@@ -39,11 +39,11 @@ class BooksController extends Controller
         $author     = Author::get();
         $category   = Category::get();
         if (empty($publisher) || empty($author) || empty($category)) {
-          Session::flash('error','Data Publisher, Author atau Category Buku Belum Ada!');
-          return view('perpustakaan::backend.books.index');
+            Session::flash('error', 'Data Publisher, Author atau Category Buku Belum Ada!');
+            return view('perpustakaan::backend.books.index');
         }
-        Session::flash('success','Buku berhasil ditambah.');
-        return view('perpustakaan::backend.books.create', compact('publisher','author','category'));
+        Session::flash('success', 'Buku berhasil ditambah.');
+        return view('perpustakaan::backend.books.create', compact('publisher', 'author', 'category'));
     }
 
     /**
@@ -53,34 +53,34 @@ class BooksController extends Controller
      */
     public function store(BookRequest $request)
     {
-      try {
-        $thumbnail = $request->file('thumbnail');
-        $thumbnail_name = time()."_".$thumbnail->getClientOriginalName();
-        // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'public/images/thumbnail';
-        $thumbnail->storeAs($tujuan_upload,$thumbnail_name);
+        try {
+            $thumbnail = $request->file('thumbnail');
+            $thumbnail_name = time() . "_" . $thumbnail->getClientOriginalName();
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'public/images/thumbnail';
+            $thumbnail->storeAs($tujuan_upload, $thumbnail_name);
 
-        $book = new Book;
-        $book->book_code        = $this->generateNumber($book);
-        $book->name             = $request->name;
-        $book->description      = $request->description;
-        $book->category_id      = $request->category_id;
-        $book->publisher_id     = $request->publisher_id;
-        $book->author_id        = $request->author_id;
-        $book->publication_year = Carbon::parse($request->publication_year)->format('Y');
-        $book->isbn             = $request->isbn;
-        $book->stock            = $request->stock;
-        $book->thumbnail        = $thumbnail_name;
-        $book->save();
+            $book = new Book;
+            $book->book_code        = $this->generateNumber($book);
+            $book->name             = $request->name;
+            $book->description      = $request->description;
+            $book->category_id      = $request->category_id;
+            $book->publisher_id     = $request->publisher_id;
+            $book->author_id        = $request->author_id;
+            $book->publication_year = Carbon::parse($request->publication_year)->format('Y');
+            $book->isbn             = $request->isbn;
+            $book->stock            = $request->stock;
+            $book->thumbnail        = $thumbnail_name;
+            $book->save();
 
-        $book->book_code        = $this->generateNumber($book);
-        $book->save();
+            $book->book_code        = $this->generateNumber($book);
+            $book->save();
 
-        Session::flash('success','Buku Berhasil di tambah,');
-        return redirect()->route('books.index');
-      } catch (\ErrorException $e) {
-        throw new ErrorException($e->getMessage());
-      }
+            Session::flash('success', 'Buku Berhasil di tambah,');
+            return redirect()->route('books.index');
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**
@@ -121,6 +121,10 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Book::find($id);
+        $data->delete();
+
+        Session::flash('success', 'Buku Berhasil di hapus.');
+        return back();
     }
 }
