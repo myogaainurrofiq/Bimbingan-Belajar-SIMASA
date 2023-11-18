@@ -198,6 +198,10 @@ class MuridController extends Controller
                 'biaya'     => $request->biaya
             ]);
 
+            $detailPay = DetailPaymentSpp::where('user_id', $murid->id)->where('status', 'unpaid')->first();
+            $detailPay->amount  =   $request->biaya;
+            $detailPay->update();
+
             DB::commit();
             Session::flash('success', 'Calon Murid Berhasil diupdate !');
             return redirect()->route('backend-pengguna-murid.index');

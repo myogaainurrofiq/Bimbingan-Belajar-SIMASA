@@ -33,10 +33,10 @@
     </div>
     <div class="content-body">
         <div class="row">
-            <div class="col-12">
+            <div class="col-sm-12">
                 <section>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-header border-bottom">
                                     <h4 class="card-title">Data Kategori</h4>
@@ -64,7 +64,7 @@
                             </div>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-header border-bottom">
                                     <h4 class="card-title">Tambah Kategori</h4>
@@ -73,7 +73,7 @@
                                    <form action=" {{route('kategori.store')}} " method="post">
                                       @csrf
                                       <div class="row">
-                                          <div class="col-12">
+                                          <div class="col-sm-12">
                                               <div class="form-group">
                                                   <label for="basicInput">Kategori</label> <span class="text-danger">*</span>
                                                   <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value=" {{old('name')}} " placeholder="Nama" />

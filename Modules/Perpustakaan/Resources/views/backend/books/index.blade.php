@@ -52,6 +52,7 @@
                                                 <th>Penerbit</th>
                                                 <th>Penulis</th>
                                                 <th>Kategori</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -64,6 +65,13 @@
                                                     <td> {{$books->publisher->name}} </td>
                                                     <td> {{$books->author->name}} </td>
                                                     <td> {{$books->category->name}} </td>
+                                                    <td>
+                                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('books.destroy', $books->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
