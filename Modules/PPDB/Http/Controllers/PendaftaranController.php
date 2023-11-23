@@ -73,13 +73,13 @@ class PendaftaranController extends Controller
         // Jika data orang tua masih empty
         if (!$ortu) {
             Session::flash('error', 'Data kamu belum lengkap !');
-            return redirect('ppdb/form-pendaftaran');
+            return redirect('ppdb/form-data-orangtua');
         }
 
         // jika data orang tua sudah terisi
         if ($ortu->telp_ayah) {
             Session::flash('success', 'Data kamu sudah lengkap !');
-            return redirect('ppdb/form-berkas');
+            return redirect('/home');
         }
         return view('ppdb::backend.pendaftaran.dataOrtu');
     }
@@ -113,7 +113,7 @@ class PendaftaranController extends Controller
 
             DB::commit();
             Session::flash('success', 'Success, Data Berhasil dikirim !');
-            return redirect('/ppdb/form-berkas');
+            return redirect('/home');
         } catch (ErrorException $e) {
             DB::rollback();
             throw new ErrorException($e->getMessage());

@@ -33,8 +33,8 @@ Route::prefix('/ppdb')->middleware('role:Guest')->group( function (){
     Route::put('form-data-orangtua/{id}','PendaftaranController@updateOrtu');
 
     /// BERKAS MURID \\\
-    Route::get('form-berkas','PendaftaranController@berkasView');
-    Route::put('form-berkas/{id}','PendaftaranController@berkasStore');
+    /* Route::get('form-berkas','PendaftaranController@berkasView');
+    Route::put('form-berkas/{id}','PendaftaranController@berkasStore'); */
 });
 
 
