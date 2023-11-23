@@ -104,27 +104,25 @@ class ProgramController extends Controller
     public function update(Request $request, $id)
     {
         try {
+
+            if ($request->image) {
+                $foto = $request->file('image');
+                $nama_foto = time()."_".$foto->getClientOriginalName();
+                // isi dengan nama folder tempat kemana file diupload
+                $tujuan_upload = 'public/images/jurusan';
+                $foto->storeAs($tujuan_upload,$nama_foto);
+            }
+
             DB::beginTransaction();
             $jurusan = Jurusan::findOrFail($id);
             $jurusan->nama      = $request->nama;
             $jurusan->singkatan = $request->singkatan;
             $jurusan->is_active = $request->is_active;
+            $dataJurusan = DataJurusan::where('jurusan_id', $id)->first();
+            $dataJurusan->content       = $request->content;
+            $dataJurusan->image         = $nama_foto ?? $dataJurusan->image;
             $jurusan->save();
-
-            if ($jurusan) {
-                if ($request->image) {
-                    $foto = $request->file('image');
-                    $nama_foto = time()."_".$foto->getClientOriginalName();
-                    // isi dengan nama folder tempat kemana file diupload
-                    $tujuan_upload = 'public/images/jurusan';
-                    $foto->storeAs($tujuan_upload,$nama_foto);
-
-                    $dataJurusan = DataJurusan::where('jurusan_id', $id)->first();
-                    $dataJurusan->content       = $request->content;
-                    $dataJurusan->image         = $nama_foto;
-                    $dataJurusan->save();
-                }
-            }
+            $dataJurusan->save();
 
             DB::commit();
             Session::flash('success','Program Studi Berhasil diupdate !');

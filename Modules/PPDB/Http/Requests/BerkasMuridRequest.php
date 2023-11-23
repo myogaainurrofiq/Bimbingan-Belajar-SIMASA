@@ -28,11 +28,11 @@ class BerkasMuridRequest extends FormRequest
     public function messages()
     {
       return [
-        'kartu_keluarga.required'         => 'File Kartu Keluarga tidak boleh kosong.',
-        'kartu_keluarga.mimes'            => 'Kartu Keluarga hanya mendukung .jpg .jpeg .png atau pdf.',
+        'kartu_keluarga.required'         => 'File Formulir Pendaftaran tidak boleh kosong.',
+        'kartu_keluarga.mimes'            => 'Formulir Pendaftaran hanya mendukung .jpg .jpeg .png atau pdf.',
         'kartu_keluarga.max'              => 'Ukuran file tidak boleh lebih dari 2MB.',
-        'akte_kelahiran.required'         => 'File Akte Kelahiran tidak boleh kosong.',
-        'akte_kelahiran.mimes'            => 'Akte Kelahiran hanya mendukung .jpg .jpeg .png atau pdf.',
+        'akte_kelahiran.required'         => 'File Bukti Pembayaran tidak boleh kosong.',
+        'akte_kelahiran.mimes'            => 'Bukti Pembayaran hanya mendukung .jpg .jpeg .png atau pdf.',
         'akte_kelahiran.max'              => 'Ukuran file tidak boleh lebih dari 2MB.',
         'surat_kelakuan_baik.required'    => 'Surat Kelakuan Baik tidak boleh kosong.',
         'surat_kelakuan_baik.mimes'       => 'Surat Kelakuan Baik hanya mendukung .jpg .jpeg .png atau pdf.',
