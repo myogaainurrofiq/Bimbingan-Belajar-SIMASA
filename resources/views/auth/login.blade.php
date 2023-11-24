@@ -103,7 +103,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label class="form-label" for="login-email">Email</label>
-                                        <input class="form-control @error('email') is-invalid @enderror" id="login-email" type="email" autocomplete="off" name="email" value=" {{old('email')}} " placeholder="Masukan Email" aria-describedby="login-email" />
+                                        <input class="form-control @error('email') is-invalid @enderror" id="login-email" type="email" autocomplete="off" tabindex="0" name="email" value=" {{old('email')}} " placeholder="Masukan Email" aria-describedby="login-email" />
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -115,7 +115,7 @@
                                             <label for="login-password">Password</label>
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
-                                            <input class="form-control form-control-merge @error('password') is-invalid @enderror" id="login-password" type="password" autocomplete="off" name="password" placeholder="············" aria-describedby="login-password" tabindex="2" />
+                                            <input class="form-control form-control-merge @error('password') is-invalid @enderror" id="login-password" type="password" tabindex="0" autocomplete="off" name="password" placeholder="············" aria-describedby="login-password" tabindex="2" />
                                             <div class="input-group-append"><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span></div>
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -126,11 +126,11 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" id="remember-me" type="checkbox" tabindex="3" />
+                                            <input class="custom-control-input" id="remember-me" type="checkbox" tabindex="0" />
                                             <label class="custom-control-label" for="remember-me"> Remember Me</label>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary btn-block" tabindex="4">Masuk</button>
+                                    <button class="btn btn-primary btn-block" tabindex="0">Masuk</button>
                                 </form>
                                 </div>
                         </div>
