@@ -134,7 +134,7 @@
                             </div>
                             <div class="media-body">
                                 <h6 class="mb-0">{{$event->lokasi ?? 'Belum Ada Event'}}</h6>
-                                <small>Manhattan, New york City</small>
+                                <small>Indonesia</small>
                             </div>
                         </div>
 

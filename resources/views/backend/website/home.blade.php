@@ -82,17 +82,7 @@
                     </div>
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <div>
-                                    <h2 class="font-weight-bolder mb-0">{{$alumni}}</h2>
-                                    <p class="card-text">Alumni</p>
-                                </div>
-                                <div class="avatar bg-light-success p-50 m-0">
-                                    <div class="avatar-content">
-                                        <i data-feather="user" class="font-medium-5"></i>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -134,7 +124,7 @@
                             </div>
                             <div class="media-body">
                                 <h6 class="mb-0">{{$event->lokasi ?? 'Belum Ada Event'}}</h6>
-                                <small>Manhattan, New york City</small>
+                                <small>Indonesia</small>
                             </div>
                         </div>
 
