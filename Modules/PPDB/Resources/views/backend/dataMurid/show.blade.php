@@ -135,7 +135,7 @@
                                         <select name="agama" class="form-control @error('agama') is-invalid @enderror" disabled>
                                             <option value="">-- Pilih --</option>
                                             <option value="Islam" {{$murid->muridDetail->agama == 'Islam' ? 'selected' : ''}}>Islam</option>
-                                            <option value="Krtisten Katolik" {{$murid->muridDetail->agama == 'Krtisten Katolik' ? 'selected' : ''}}>Krtisten Katolik</option>
+                                            <option value="Kristen Katolik" {{$murid->muridDetail->agama == 'Kristen Katolik' ? 'selected' : ''}}>Kristen Katolik</option>
                                             <option value="Kristen Protestan" {{$murid->muridDetail->agama == 'Kristen Protestan' ? 'selected' : ''}}>Kristen Protestan</option>
                                             <option value="Hindu" {{$murid->muridDetail->agama == 'Hindu' ? 'selected' : ''}}>Hindu</option>
                                             <option value="Budha" {{$murid->muridDetail->agama == 'Budha' ? 'selected' : ''}}>Budha</option>
