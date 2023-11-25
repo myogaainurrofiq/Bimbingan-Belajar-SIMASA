@@ -62,7 +62,7 @@
                                                     <td> {{$key+1}} </td>
                                                     <td> {{$HistoryPeminjams->borrow_code}} </td>
                                                     <td> {{$HistoryPeminjams->members->name}} </td>
-                                                    <td> {{$HistoryPeminjams->books->name}} </td>
+                                                    <td> {{$HistoryPeminjams->books->name ?? 'None'}} </td>
                                                     <td> {{$HistoryPeminjams->borrow_date}} </td>
                                                     <td> {{$HistoryPeminjams->return_date}} </td>
                                                     <td> {{$HistoryPeminjams->lateness}} </td>
