@@ -21,7 +21,6 @@ class PendaftaranController extends Controller
     public function index()
     {
         $user = User::with('muridDetail', 'dataOrtu')->where('status', 'Aktif')->where('id', Auth::id())->first();
-
         // Jika data murid sudah lengkap
         if ($user->muridDetail->agama) {
             return redirect('ppdb/form-data-orangtua');
