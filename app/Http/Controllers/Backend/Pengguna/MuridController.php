@@ -205,7 +205,7 @@ class MuridController extends Controller
                         $detailPay->amount  =   $request->biaya;
                         $detailPay->update();
                     }else{
-                        Session::flash('warning','Tidak dapat mengganti nominal pada murid yang sudah membayar!');
+                        Session::flash('error','Tidak dapat mengganti nominal pada murid yang sudah membayar!');
                     }
                 }
             
