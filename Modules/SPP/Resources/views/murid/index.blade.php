@@ -85,7 +85,7 @@
                                                       @elseif(Date('m') == 10)
                                                         <span class="badge badge-{{$payments->payment->October == 'paid' ? 'info' : 'warning'}}" style="display:{{$payments->payment->October == 'paid' ? 'hidden' : ''}} ">{{strtoupper($payments->payment->October)}}</span>
                                                       @elseif(Date('m') == 11)
-                                                        <span class="badge badge-{{$payments->payment->November == 'paid' ? 'info' : 'warning'}}" style="display:{{$payments->payment->November == 'paid' ? 'hidden' : ''}} ">{{strtoupper($payments->payment->November)}}</span>
+                                                        <span class="badge badge-{{$payments->payment->November == 'paid' ? 'info' : 'warning'}}" style="display:{{$payments->payment->November == 'paid' ? 'none' : ''}}" style="display:{{$payments->payment->November == 'paid' ? 'hidden' : ''}} ">{{strtoupper($payments->payment->November)}}</span>
                                                       @elseif(Date('m') == 12)
                                                         <span class="badge badge-{{$payments->payment->December == 'paid' ? 'info' : 'warning'}}">{{strtoupper($payments->payment->December)}}</span>
                                                       @endif
