@@ -200,7 +200,7 @@ class MuridController extends Controller
 
             $detailPay = DetailPaymentSpp::where('user_id', $murid->id)->where('status', 'unpaid')->first();
             //memeriksa apakah detailPay tidak null sebelum akses prorperty
-                if($detailPay->status === 'unpaid'){
+                if($detailPay->status == 'unpaid'){
                     $detailPay->amount  =   $request->biaya;
                     $detailPay->update();
                 }else{
