@@ -59,10 +59,10 @@
                                                     <td></td>
                                                     <td> {{$key+1}} </td>
                                                     <td> {{$members->name}} </td>
-                                                    <td> {{$members->is_active == 0 ? 'Aktif' : 'Tidak Aktif'}} </td>
+                                                    <td> {{$members->is_active == 1 ? 'Aktif' : 'Tidak Aktif'}} </td>
                                                     <td> {{$members->created_at}} </td>
                                                     <td>
-                                                        <a href="" class="btn btn-success btn-sm">edit</a>
+                                                        <a data-id="{{$members->id}}" id="statusMember" class="btn btn-warning btn-sm">{{$members->is_active == true ? 'Non Aktifkan' : ' Aktifkan'}}</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -119,8 +119,16 @@
 @endsection
 @section('scripts')
     <script type="text/javascript">
-      @if (count($errors) > 0)
-          $('#addMember').modal('show');
-      @endif
+        @if (count($errors) > 0)
+            $('#addMember').modal('show');
+        @endif
+
+
+        $(document).on('click', '#statusMember', function () {
+        var id = $(this).attr('data-id');
+            $.get('update-status-member', {'_token' : $('meta[name=csrf-token]').attr('content'),id:id}, function(_resp){
+                location.reload()
+            });
+        });
     </script>
 @endsection
