@@ -1,11 +1,11 @@
 @extends('layouts.backend.app')
 
 @section('title')
-    Data Kategori
+    Edit Kategori
 @endsection
 
 @section('content')
-<div class="content-wrapper container-xxl p-0">
+
     @if ($message = Session::get('success'))
         <div class="alert alert-success" role="alert">
             <div class="alert-body">
@@ -21,11 +21,12 @@
             </div>
         </div>
     @endif
+<div class="content-wrapper container-xxl p-0">
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Data Kategori</h2>
+                    <h2> Edit Kategori</h2>
                 </div>
             </div>
         </div>
@@ -46,8 +47,7 @@
                                             <tr>
                                                 <th></th>
                                                 <th style="width: 10%">No</th>
-                                                <th>Name</th>
-                                                <th>Action</th>
+                                                <th>Kategori</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -56,9 +56,6 @@
                                                     <td></td>
                                                     <td style="width: 10%"> {{$key+1}} </td>
                                                     <td> {{$kategoris->name}} </td>
-                                                    <td>
-                                                        <a href="{{route('kategori.edit',$kategoris->id)}}" class="btn btn-info btn-sm">Edit</a>
-                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -70,16 +67,17 @@
                         <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Tambah Kategori</h4>
+                                    <h4 class="card-title">Edit Kategori</h4>
                                 </div>
                                 <div class="card-body">
-                                   <form action=" {{route('kategori.store')}} " method="post">
+                                   <form action=" {{route('kategori.update', $data->id)}} " method="post">
                                       @csrf
+                                      @method('PUT')
                                       <div class="row">
                                           <div class="col-sm-12">
                                               <div class="form-group">
                                                   <label for="basicInput">Kategori</label> <span class="text-danger">*</span>
-                                                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value=" {{old('name')}} " placeholder="Nama" />
+                                                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value=" {{$data->name}}" placeholder="Nama" />
                                                   @error('name')
                                                       <div class="invalid-feedback">
                                                       <strong>{{ $message }}</strong>
@@ -88,7 +86,7 @@
                                               </div>
                                           </div>
                                       </div>
-                                      <button class="btn btn-primary" type="submit">Tambah</button>
+                                      <button class="btn btn-primary" type="submit">Update</button>
                                       <button type="reset" class="btn btn-warning">Batal</button>
                                   </form>
                                 </div>
