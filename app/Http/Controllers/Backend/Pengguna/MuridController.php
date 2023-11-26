@@ -200,14 +200,11 @@ class MuridController extends Controller
 
             $detailPay = DetailPaymentSpp::where('user_id', $murid->id)->where('status', 'unpaid')->first();
             $detailPay->amount  =   $request->biaya;
-            $detailPay->update();
-
             if($detailPay->status === 'paid'){
-            Session::flash('error','Tidak dapat mengganti nominal pada murid yang sudah membayar!');
+                Session::flash('error','Tidak dapat mengganti nominal pada murid yang sudah membayar!');
             }
-                    
-                
-            
+            $detailPay->update();
+              
             DB::commit();
             Session::flash('success', 'Data Murid Berhasil diupdate !');
             return redirect()->route('backend-pengguna-murid.index');
