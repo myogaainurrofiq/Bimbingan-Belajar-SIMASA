@@ -19,7 +19,7 @@ class PublisherController extends Controller
     public function index()
     {
         $publisher = Publisher::all();
-        return view('perpustakaan::backend.publisher.index',compact('publisher'));
+        return view('perpustakaan::backend.publisher.index', compact('publisher'));
     }
 
     /**
@@ -38,18 +38,18 @@ class PublisherController extends Controller
      */
     public function store(PublisherRequest $request)
     {
-      try {
-        Publisher::create([
-          'name'    => $request->name,
-          'address' => $request->address,
-          'phone'   => $request->phone,
-        ]);
+        try {
+            Publisher::create([
+                'name'    => $request->name,
+                'address' => $request->address,
+                'phone'   => $request->phone,
+            ]);
 
-        Session::flash('success','Penerbit Berhasil di tambah!');
-        return redirect()->route('publisher.index');
-      } catch (\ErrorException $e) {
-        throw new ErrorException($e->getMessage());
-      }
+            Session::flash('success', 'Penerbit Berhasil di tambah!');
+            return redirect()->route('publisher.index');
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**
@@ -69,7 +69,8 @@ class PublisherController extends Controller
      */
     public function edit($id)
     {
-        return view('perpustakaan::edit');
+        $data   = Publisher::find($id);
+        return view('perpustakaan::backend.publisher.edit', compact('data'));
     }
 
     /**
@@ -80,7 +81,18 @@ class PublisherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $data = Publisher::find($id);
+            $data->name     = $request->name;
+            $data->address  = $request->address;
+            $data->phone    = $request->phone;
+            $data->update();
+
+            Session::flash('success', 'Penerbit Berhasil di update!');
+            return redirect()->route('publisher.index');
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**
