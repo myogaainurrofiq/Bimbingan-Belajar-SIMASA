@@ -21,9 +21,9 @@ class MemberController extends Controller
      */
     public function index()
     {
-      $user = User::doesnthave('member')->where('role','Murid')->where('status','Aktif')->get();
-      $member = Member::all();
-      return view('perpustakaan::backend.member.index', compact('user','member'));
+        $user = User::doesnthave('member')->where('role', 'Murid')->where('status', 'Aktif')->get();
+        $member = Member::all();
+        return view('perpustakaan::backend.member.index', compact('user', 'member'));
     }
 
     /**
@@ -42,23 +42,23 @@ class MemberController extends Controller
      */
     public function store(MemberRequest $request)
     {
-      try {
-        $user = User::where('id', $request->user_id)->first();
-        $member = new Member;
-        $member->member_code = $this->generateNumber($member,'M');
-        $member->user_id  = $request->user_id;
-        $member->name     = $user->name;
-        $member->save();
+        try {
+            $user = User::where('id', $request->user_id)->first();
+            $member = new Member;
+            $member->member_code    = $this->generateNumber($member, 'M');
+            $member->user_id        = $request->user_id;
+            $member->name           = $user->name;
+            $member->is_active      = true;
+            $member->save();
 
-        $member->member_code = $this->generateNumber($member,'M');
-        $member->save();
+            $member->member_code = $this->generateNumber($member, 'M');
+            $member->save();
 
-        Session::flash('success','Member berhasil ditambah.');
-        return back();
-
-      } catch (\ErrorException $e) {
-        throw new ErrorException($e->getMessage());
-      }
+            Session::flash('success', 'Member berhasil ditambah.');
+            return back();
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**
@@ -100,5 +100,15 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function StatusMember(Request $request)
+    {
+        $data = Member::find($request->id);
+        $data->update([
+            'is_active' => $data->is_active == false ? true : false
+        ]);
+        Session::flash('success', 'Member berhasil diupdate.');
+        return back();
     }
 }
