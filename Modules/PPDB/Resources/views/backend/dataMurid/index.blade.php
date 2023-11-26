@@ -51,9 +51,10 @@
                                                 <th>Email</th>
                                                 <th>Status</th>
                                                 <th>Hak Akses</th>
+                                                <th>Berkas</th>
                                                 <th>Action</th>
                                             </tr>
-                                        </thead>    
+                                        </thead>
                                         <tbody>
                                             @foreach ($murid as $key => $murids)
                                                 <tr>
@@ -63,12 +64,13 @@
                                                     <td> {{$murids->email}} </td>
                                                     <td> {{$murids->muridDetail->proses}} </td>
                                                     <td> {{$murids->role}} </td>
+                                                    <td> {{$murids->muridDetail != null || $murids->dataOrtu != null || $murids->berkas != null ? 'Lengkap' : 'Belum Lengkap'}} </td>
                                                     <td>
                                                         <a href=" {{route('data-murid.show', $murids->id)}} " class="btn btn-success btn-sm">Detail</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        </tbody>                                   
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

@@ -38,15 +38,15 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-      try {
-        Category::create([
-          'name'  => $request->name
-        ]);
-        Session::flash('success','Kategori berhasil di tambah.');
-        return redirect()->route('kategori.index');
-      } catch (\ErrorException $e) {
-        throw new ErrorException($e->getMessage());
-      }
+        try {
+            Category::create([
+                'name'  => $request->name
+            ]);
+            Session::flash('success', 'Kategori berhasil di tambah.');
+            return redirect()->route('kategori.index');
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**
@@ -66,7 +66,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('perpustakaan::edit');
+        $data = Category::find($id);
+        $kategori = Category::all();
+        return view('perpustakaan::backend.category.edit', compact('data', 'kategori'));
     }
 
     /**
@@ -77,7 +79,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $data = Category::find($id);
+            $data->name  = $request->name;
+            $data->update();
+
+            Session::flash('success', 'Kategori berhasil di update.');
+            return redirect()->route('kategori.index');
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**

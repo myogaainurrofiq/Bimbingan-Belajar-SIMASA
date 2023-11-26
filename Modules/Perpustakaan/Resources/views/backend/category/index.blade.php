@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+<div class="content-wrapper container-xxl p-0">
     @if ($message = Session::get('success'))
         <div class="alert alert-success" role="alert">
             <div class="alert-body">
@@ -21,7 +21,6 @@
             </div>
         </div>
     @endif
-<div class="content-wrapper container-xxl p-0">
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -47,7 +46,8 @@
                                             <tr>
                                                 <th></th>
                                                 <th style="width: 10%">No</th>
-                                                <th>Kategori</th>
+                                                <th>Name</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -56,6 +56,9 @@
                                                     <td></td>
                                                     <td style="width: 10%"> {{$key+1}} </td>
                                                     <td> {{$kategoris->name}} </td>
+                                                    <td>
+                                                        <a href="{{route('kategori.edit',$kategoris->id)}}" class="btn btn-info btn-sm">Edit</a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

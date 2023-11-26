@@ -6,6 +6,7 @@
 
 @section('content')
 
+<div class="content-wrapper container-xxl p-0">
     @if ($message = Session::get('success'))
         <div class="alert alert-success" role="alert">
             <div class="alert-body">
@@ -21,7 +22,6 @@
             </div>
         </div>
     @endif
-<div class="content-wrapper container-xxl p-0">
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -62,7 +62,7 @@
                                                     <td> {{$publishers->address}} </td>
                                                     <td> {{$publishers->phone}} </td>
                                                     <td>
-                                                        <a href="" class="btn btn-success btn-sm">edit</a>
+                                                        <a href="{{route('publisher.edit', $publishers->id)}}" class="btn btn-info btn-sm">edit</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
