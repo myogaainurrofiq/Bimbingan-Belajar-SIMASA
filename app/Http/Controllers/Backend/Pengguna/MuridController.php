@@ -199,11 +199,19 @@ class MuridController extends Controller
             ]);
 
             $detailPay = DetailPaymentSpp::where('user_id', $murid->id)->where('status', 'unpaid')->first();
-            $detailPay->amount  =   $request->biaya;
-            $detailPay->update();
+            //memeriksa apakah detailPay tidak null sebelum akses prorperty
+            if($detailPay !== null){
+                if($detailPay->status === 'unpaid'){
+                    $detailPay->amount  =   $request->biaya;
+                    $detailPay->update();
+                }else{
+                    Session::flash('warning','Tidak dapat mengganti nominal pada murid yang sudah membayar!');
+                }
+            }
+            
 
             DB::commit();
-            Session::flash('success', 'Calon Murid Berhasil diupdate !');
+            Session::flash('success', 'Data Murid Berhasil diupdate !');
             return redirect()->route('backend-pengguna-murid.index');
         } catch (ErrorException $e) {
             DB::rollback();
