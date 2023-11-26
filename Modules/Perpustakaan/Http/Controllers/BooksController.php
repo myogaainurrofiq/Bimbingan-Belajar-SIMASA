@@ -100,7 +100,11 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        return view('perpustakaan::edit');
+        $book = Book::find($id);
+        $category   = Category::get();
+        $publisher  = Publisher::get();
+        $author     = Author::get();
+        return view('perpustakaan::backend.books.edit', compact('book', 'category', 'publisher', 'author'));
     }
 
     /**
@@ -111,7 +115,32 @@ class BooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            if ($request->file('thumbnail')) {
+                $thumbnail = $request->file('thumbnail');
+                $thumbnail_name = time() . "_" . $thumbnail->getClientOriginalName();
+                // isi dengan nama folder tempat kemana file diupload
+                $tujuan_upload = 'public/images/thumbnail';
+                $thumbnail->storeAs($tujuan_upload, $thumbnail_name);
+            }
+
+            $book =  Book::find($id);
+            $book->name             = $request->name;
+            $book->description      = $request->description;
+            $book->category_id      = $request->category_id;
+            $book->publisher_id     = $request->publisher_id;
+            $book->author_id        = $request->author_id;
+            $book->publication_year = Carbon::parse($request->publication_year)->format('Y');
+            $book->isbn             = $request->isbn;
+            $book->stock            = $request->stock;
+            $book->thumbnail        = $thumbnail_name ?? $book->thumbnail;
+            $book->update();
+
+            Session::flash('success', 'Buku Berhasil di update.');
+            return redirect()->route('books.index');
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**

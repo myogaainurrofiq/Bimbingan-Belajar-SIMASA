@@ -66,11 +66,7 @@
                                                     <td> {{$books->author->name}} </td>
                                                     <td> {{$books->category->name}} </td>
                                                     <td>
-                                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('books.destroy', $books->id) }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                                                        </form>
+                                                        <a href="{{route('books.edit', $books->id)}}" class="btn btn-info btn-sm">Edit</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
