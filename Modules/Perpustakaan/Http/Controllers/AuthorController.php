@@ -38,16 +38,16 @@ class AuthorController extends Controller
      */
     public function store(AuthorRequest $request)
     {
-      try {
-        Author::create([
-          'name'  => $request->name
-        ]);
+        try {
+            Author::create([
+                'name'  => $request->name
+            ]);
 
-        Session::flash('success','Penulis berhasil ditambah.');
-        return redirect()->route('author.index');
-      } catch (\ErrorException $e) {
-        throw new ErrorException($e->getMessage());
-      }
+            Session::flash('success', 'Penulis berhasil ditambah.');
+            return redirect()->route('author.index');
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**
@@ -67,7 +67,9 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-        return view('perpustakaan::edit');
+        $data = Author::find($id);
+        $author = Author::all();
+        return view('perpustakaan::backend.author.edit', compact('data', 'author'));
     }
 
     /**
@@ -78,7 +80,16 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $data = Author::find($id);
+            $data->name  = $request->name;
+            $data->update();
+
+            Session::flash('success', 'Penulis berhasil diupdate.');
+            return redirect()->route('author.index');
+        } catch (\ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 
     /**
