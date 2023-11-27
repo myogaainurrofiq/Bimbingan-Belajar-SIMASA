@@ -102,8 +102,8 @@ class HomeController extends Controller
 
                 $book = Book::sum('stock');
                 $borrow = Borrowing::whereNull('lateness')->count();
-                $member = Member::where('is_active', 0)->count();
-                $members = Member::where('is_active', true)->count();
+                $member = Member::where('is_active', true)->count();
+                $members = Member::where('is_active', false)->count();
                 return view('perpustakaan::index', compact('book', 'borrow', 'member', 'members'));
             }
 
