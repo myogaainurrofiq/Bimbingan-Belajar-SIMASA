@@ -59,7 +59,7 @@
                                                     <td></td>
                                                     <td> {{$key+1}} </td>
                                                     <td> {{$members->name}} </td>
-                                                    <td> {{$members->is_active == 1 ? 'Aktif' : 'Tidak Aktif'}} </td>
+                                                    <td> {{$members->is_active == true ? 'Aktif' : 'Tidak Aktif'}} </td>
                                                     <td> {{$members->created_at}} </td>
                                                     <td>
                                                         <a data-id="{{$members->id}}" id="statusMember" class="btn btn-warning btn-sm">{{$members->is_active == true ? 'Non Aktifkan' : ' Aktifkan'}}</a>
