@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="description" content="SIMASA adalah sistem informasi Bimbingan Belajar Savaana Course Magelang berbasis website yang dikembangkan dengan Framework Laravel">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="SIMASA, bimbel savaana, savaana course, bimbel magelang, savaana magelang">
     <meta name="author" content="SIMASA">
     <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
