@@ -48,6 +48,7 @@
                                                 <th></th>
                                                 <th style="width: 10%">No</th>
                                                 <th>Kategori</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -56,6 +57,9 @@
                                                     <td></td>
                                                     <td style="width: 10%"> {{$key+1}} </td>
                                                     <td> {{$kategoris->name}} </td>
+                                                    <td>
+                                                        <a href="{{route('kategori.edit', $kategoris->id)}}" class="btn btn-info btn-sm">Edit</a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
