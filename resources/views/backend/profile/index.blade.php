@@ -117,7 +117,7 @@
                                                         <span class="text-danger" style="font-size: 10px">Kosongkan jika tidak ingin mengubah.</span>
                                                     </div>
                                                 </div>
-                                                @if ($profile->email_verified_at == NULL)
+                                                <!-- @if ($profile->email_verified_at == NULL)
                                                     <div class="col-12 mt-75">
                                                         <div class="alert alert-warning mb-50" role="alert">
                                                             <h4 class="alert-heading">Email belum dikonfirmasi. Silakan periksa kotak masuk.</h4>
@@ -126,7 +126,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endif
+                                                @endif -->
                                                 <div class="col-12">
                                                     <button type="submit" class="btn btn-primary mt-2 mr-1">Update</button>
                                                     <a href="/home" class="btn btn-outline-secondary mt-2">Batal</a>
