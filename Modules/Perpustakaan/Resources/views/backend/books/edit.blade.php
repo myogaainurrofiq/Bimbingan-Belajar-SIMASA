@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-   Tambah Buku
+   Edit Buku
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header header-bottom">
-                        <h4>Tambah Buku</h4>
+                        <h4>Edit Buku</h4>
                     </div>
                     <div class="card-body">
                         <form action=" {{route('books.update', $book->id)}} " method="post" enctype="multipart/form-data">
