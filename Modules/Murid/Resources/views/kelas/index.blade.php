@@ -40,7 +40,12 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="#" class="blog-title-truncate text-body-heading">{{$item->kelas->mapel}}</a>
+                                    @if ($item->kelas)
+                                        <a href="#" class="blog-title-truncate text-body-heading">{{$item->kelas->mapel}}</a>
+                                    @else
+                                    <!-- Handle jika $item->kelas bernilai null -->
+                                        <span>Kelas tidak tersedia</span>
+                                    @endif
                                 </h4>
                                 <div class="media">
                                     <div class="media-body">
