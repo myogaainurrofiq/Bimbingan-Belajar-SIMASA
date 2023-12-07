@@ -114,7 +114,7 @@ class PembayaranController extends Controller
                 'destination_bank'  => $request->destination_bank,
                 'month'             => $getBln,
                 'status'            => 'unpaid',
-                'amount'            => $biaya->biaya . rand(10, 100),
+                'amount'            => $biaya->biaya,
                 'file'              => $file_payment,
                 'date_file'         => Carbon::now()
             ]);
