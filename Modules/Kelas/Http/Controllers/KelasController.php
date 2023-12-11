@@ -126,7 +126,7 @@ class KelasController extends Controller
         $data->delete();
 
         $dataKelas = KelasMurid::where('kelas_id', $id)->first();
-        $dataKelas->murid()->delete();
+        $dataKelas->murid()->dissociate();
         $dataKelas->delete();
         Session::flash('success', 'Kelas Berhasil di hapus.');
         return back();
