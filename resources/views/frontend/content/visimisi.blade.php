@@ -7,7 +7,7 @@
     @section('about')
         <div class="container">
             @if ($visimisi)
-                <div class="row about-page1-inner" style="margin-top: 5%">
+                <div class="row about-page1-inner" style="margin-top: 5%; text-align:justify;">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="about-page-content-holder">
                             <div class="content-box">

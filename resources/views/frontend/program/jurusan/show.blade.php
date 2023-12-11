@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row about-page1-inner">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="about-page-content-holder">
+                    <div class="about-page-content-holder" style="text-align: justify;">
                         {{$jurusan->dataJurusan->content}}
                     </div>
                 </div>

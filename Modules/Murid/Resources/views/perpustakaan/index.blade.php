@@ -41,7 +41,7 @@
                     <div class="col-md-4 col-12">
                         <div class="card">
                             <a href="#">
-                                <img class="card-img-top img-fluid" src="{{asset('storage/images/thumbnail/' .$books->thumbnail)}}" alt="Cover Buku" style="max-height: 200px; max-weidth:100px; min-height:200px" />
+                                <img class="card-img-top img-fluid" src="{{asset('storage/images/thumbnail/' .$books->thumbnail)}}" alt="Cover Buku" style="max-height: 200px; max-width:100px; min-height:200px" />
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">
