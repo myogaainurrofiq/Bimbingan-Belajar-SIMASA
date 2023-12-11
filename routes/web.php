@@ -21,7 +21,7 @@ Route::get('/', 'Frontend\IndexController@index');
 
 ///// MENU \\\\\
 //// Profile Savaana \\\\
-Route::get('profile-sekolah', [App\Http\Controllers\Frontend\IndexController::class, 'profileSekolah'])->name('profile.sekolah');
+Route::get('profile-savaana', [App\Http\Controllers\Frontend\IndexController::class, 'profileSekolah'])->name('profile.sekolah');
 
 //// VISI dan MISI
 Route::get('visi-dan-misi', [App\Http\Controllers\Frontend\IndexController::class, 'visimisi'])->name('visimisi.sekolah');
@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function () {
         ///// WEBSITE \\\\\
         Route::resources([
             /// Profile Savaana \\
-            'backend-profile-sekolah'   => Backend\Website\ProfilSekolahController::class,
+            'backend-profile-savaana'   => Backend\Website\ProfilSekolahController::class,
             /// VISI & MISI \\\
             'backend-visimisi'  => Backend\Website\VisidanMisiController::class,
             //// PROGRAM STUDI \\\\

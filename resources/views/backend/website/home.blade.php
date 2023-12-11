@@ -36,7 +36,7 @@
                         <div class="card-header">
                             <div>
                                 <h2 class="font-weight-bolder mb-0">{{$guru}}</h2>
-                                <p class="card-text">Guru</p>
+                                <p class="card-text">Pengajar</p>
                             </div>
                             <div class="avatar bg-light-primary p-50 m-0">
                                 <div class="avatar-content">
@@ -139,13 +139,10 @@
                         <div class="card card-statistics">
                             <div class="card-header">
                                 <h4 class="card-title">Statistik Perpustakaan</h4>
-                                <div class="d-flex align-items-center">
-                                    <p class="card-text font-small-2 mr-25 mb-0">Updated 1 day ago</p>
-                                </div>
                             </div>
                             <div class="card-body statistics-body">
                                 <div class="row">
-                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                         <div class="media">
                                             <div class="avatar bg-light-primary mr-2">
                                                 <div class="avatar-content">
@@ -153,10 +150,10 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">30</h4>
+                                                <h4 class="font-weight-bolder mb-0">{{$borrow}}</h4>
                                                 <p class="card-text font-small-3 mb-0">Pengunjung</p>
                                             </div>
-                                        </div>
+                                        </div>  
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                         <div class="media">

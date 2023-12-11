@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="card-body">
                                     @if ($profile == NULL)
-                                        <form action=" {{route('backend-profile-sekolah.store')}} " method="post" enctype="multipart/form-data">
+                                        <form action=" {{route('backend-profile-savaana.store')}} " method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-6">
@@ -85,10 +85,10 @@
                                             
                                             </div>
                                             <button class="btn btn-primary" type="submit">Tambah</button>
-                                            <a href="{{route('backend-profile-sekolah.index')}}" class="btn btn-warning">Batal</a>
+                                            <a href="{{route('backend-profile-savaana.index')}}" class="btn btn-warning">Batal</a>
                                         </form>
                                     @else
-                                        <form action=" {{route('backend-profile-sekolah.update', $profile->id)}} " method="post" enctype="multipart/form-data">
+                                        <form action=" {{route('backend-profile-savaana.update', $profile->id)}} " method="post" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="row">
@@ -132,7 +132,7 @@
                                             
                                             </div>
                                             <button class="btn btn-primary" type="submit">Update</button>
-                                            <a href="{{route('backend-profile-sekolah.index')}}" class="btn btn-warning">Batal</a>
+                                            <a href="{{route('backend-profile-savaana.index')}}" class="btn btn-warning">Batal</a>
                                         </form>
                                     @endif
                                 </div>

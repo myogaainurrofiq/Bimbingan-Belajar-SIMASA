@@ -54,7 +54,7 @@ class ProfilSekolahController extends Controller
             $profile->save();
 
             Session::flash('success','Profile Savaana Berhasil dibuat!');
-            return redirect()->route('backend-profile-sekolah.index');
+            return redirect()->route('backend-profile-savaana.index');
 
         } catch (ErrorException $e) {
             throw new ErrorException($e->getMessage());
@@ -108,7 +108,7 @@ class ProfilSekolahController extends Controller
             $profile->save();
 
             Session::flash('success','Profile Savaana Berhasil diupdate!');
-            return redirect()->route('backend-profile-sekolah.index');
+            return redirect()->route('backend-profile-savaana.index');
 
         } catch (ErrorException $e) {
             throw new ErrorException($e->getMessage());
