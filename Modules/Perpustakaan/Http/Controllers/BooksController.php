@@ -42,7 +42,6 @@ class BooksController extends Controller
             Session::flash('error', 'Data Publisher, Author atau Category Buku Belum Ada!');
             return view('perpustakaan::backend.books.index');
         }
-        Session::flash('success', 'Buku berhasil ditambah.');
         return view('perpustakaan::backend.books.create', compact('publisher', 'author', 'category'));
     }
 
