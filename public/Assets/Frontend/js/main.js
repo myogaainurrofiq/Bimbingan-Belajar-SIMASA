@@ -138,7 +138,7 @@
      --------------------------------------*/
     $("nav#dropdown").meanmenu({
         siteLogo:
-            "<a href='index.html' class='logo-mobile-menu'><img src='../favicon.ico' /></a>",
+            "<a href='' class='logo-mobile-menu'><img src='../favicon.ico' /></a>",
     });
 
     /*-------------------------------------
